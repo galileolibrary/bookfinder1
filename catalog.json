@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-17",
-  "source": "MARC: ExportBibJob6107450USMarc.001 + Status: LibraryTitleCopyReportJob6107451.xlsx",
+  "generated_at": "2026-08-18",
+  "source": "MARC: ExportBibJob6107450USMarc.001 + Status: LibraryTitleCopyReportJob6109020.xlsx",
   "books": [
     {
       "id": "1",
@@ -230,7 +230,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC DUN",
-      "section": "",
+      "section": "Mystery / Thriller, Teen women",
       "genres": [
         "mystery"
       ],
@@ -303,7 +303,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC NAM",
-      "section": "",
+      "section": "Asian American",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -419,7 +419,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "811 ANG",
-      "section": "",
+      "section": "African American, Poetry",
       "genres": [
         "verse novel"
       ],
@@ -598,7 +598,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC CAB",
-      "section": "",
+      "section": "Humor, Romance - sweet",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -618,7 +618,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC CAB",
-      "section": "",
+      "section": "Teen women",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -638,7 +638,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC RYA",
-      "section": "",
+      "section": "&..., gay, Lesbian, Romance - complicated, Teen women",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -794,7 +794,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC LEV",
-      "section": "",
+      "section": "Historical Fiction",
       "genres": [
         "historical fiction",
         "adventure"
@@ -985,7 +985,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC GIL",
-      "section": "",
+      "section": "Mystery / Thriller",
       "genres": [],
       "moods": [
         "brutal"
@@ -1049,7 +1049,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC BRO",
-      "section": "",
+      "section": "Romance - complicated, Teen women",
       "genres": [],
       "moods": [
         "emotional"
@@ -1120,7 +1120,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC NAY",
-      "section": "",
+      "section": "African American, Crime, Disadvantaged Youth, Urban Life",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -1490,7 +1490,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC FLA",
-      "section": "",
+      "section": "African American, Family, Urban Life",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -1858,7 +1858,7 @@
       "copies_total": 2,
       "copies_available": 2,
       "call_number": "741.5 KIS",
-      "section": "",
+      "section": "Graphic novels",
       "genres": [
         "graphic novel"
       ],
@@ -1879,7 +1879,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "973 CHA",
-      "section": "",
+      "section": "Asian American, Ethnic studies",
       "genres": [
         "historical fiction"
       ],
@@ -1902,7 +1902,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC BRO",
-      "section": "",
+      "section": "Crime",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -2013,7 +2013,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC GIL",
-      "section": "",
+      "section": "Family, Light reads, Mystery / Thriller",
       "genres": [
         "mystery"
       ],
@@ -2086,7 +2086,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC ROS",
-      "section": "",
+      "section": "Teen women",
       "genres": [
         "war"
       ],
@@ -2112,7 +2112,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC GOT SC",
-      "section": "",
+      "section": "Horror",
       "genres": [
         "horror",
         "fantasy"
@@ -2207,7 +2207,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "741.5 WHE",
-      "section": "",
+      "section": "Graphic novels",
       "genres": [
         "sci-fi",
         "dystopian",
@@ -2255,7 +2255,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HOS",
-      "section": "",
+      "section": "Historical Fiction",
       "genres": [],
       "moods": [
         "scary"
@@ -2377,7 +2377,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC MLY",
-      "section": "",
+      "section": "Teen women",
       "genres": [
         "fantasy"
       ],
@@ -2399,7 +2399,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC CAB",
-      "section": "",
+      "section": "Romance - sweet",
       "genres": [],
       "moods": [],
       "themes": [
@@ -2465,7 +2465,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC BUR",
-      "section": "",
+      "section": "Crime",
       "genres": [],
       "moods": [],
       "themes": [
@@ -2674,7 +2674,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC CRU",
-      "section": "",
+      "section": "Sports",
       "genres": [
         "romance"
       ],
@@ -2742,7 +2742,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "741.5 ODA Graphic",
-      "section": "",
+      "section": "Adventure, Friendship, Graphic novels, Humor",
       "genres": [
         "graphic novel"
       ],
@@ -2790,7 +2790,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HER",
-      "section": "",
+      "section": "Tragedy",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -2810,7 +2810,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC KIR",
-      "section": "",
+      "section": "Mystery / Thriller",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -2925,7 +2925,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "741.5 ARA",
-      "section": "",
+      "section": "Adventure, Graphic novels",
       "genres": [
         "fantasy",
         "graphic novel"
@@ -3177,7 +3177,7 @@
       "copies_total": 1,
       "copies_available": 0,
       "call_number": "741.5 KUB",
-      "section": "",
+      "section": "Graphic novels",
       "genres": [
         "horror",
         "fantasy",
@@ -3202,7 +3202,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC EWI",
-      "section": "",
+      "section": "Light reads",
       "genres": [],
       "moods": [],
       "themes": [
@@ -4287,7 +4287,7 @@
       "copies_total": 1,
       "copies_available": 0,
       "call_number": "GN 921 X",
-      "section": "",
+      "section": "Bio's & Auto-bio's, Graphic novels",
       "genres": [
         "nonfiction",
         "graphic novel"
@@ -4568,7 +4568,7 @@
       "copies_total": 1,
       "copies_available": 0,
       "call_number": "FIC SEB",
-      "section": "",
+      "section": "Family, Fantasy, Romance - complicated, Tragedy",
       "genres": [],
       "moods": [
         "emotional"
@@ -4850,7 +4850,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC FLA",
-      "section": "",
+      "section": "African American, Teen women",
       "genres": [],
       "moods": [
         "dark"
@@ -5124,7 +5124,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC CIS",
-      "section": "",
+      "section": "Latino",
       "genres": [],
       "moods": [],
       "themes": [
@@ -5167,7 +5167,7 @@
       "copies_total": 2,
       "copies_available": 2,
       "call_number": "FIC WRI",
-      "section": "",
+      "section": "African American",
       "genres": [],
       "moods": [
         "brutal"
@@ -5256,9 +5256,9 @@
       "title": "The metamorphosis",
       "author": "Kafka, Franz",
       "isbn": "0553213695",
-      "available": true,
+      "available": false,
       "copies_total": 1,
-      "copies_available": 1,
+      "copies_available": 0,
       "call_number": "FIC KAF",
       "section": "",
       "genres": [
@@ -5390,7 +5390,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC CUR",
-      "section": "",
+      "section": "Adventure, African American, Humor",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -5433,7 +5433,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC JIM",
-      "section": "",
+      "section": "Latino",
       "genres": [],
       "moods": [],
       "themes": [
@@ -5560,7 +5560,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC GER",
-      "section": "",
+      "section": "Fantasy, Mythology related, Romance - complicated, War and peace",
       "genres": [
         "historical fiction"
       ],
@@ -5775,7 +5775,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC LEG",
-      "section": "",
+      "section": "Adventure, Fantasy",
       "genres": [
         "fantasy"
       ],
@@ -6363,7 +6363,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HOW SC",
-      "section": "",
+      "section": "Identity",
       "genres": [
         "romance"
       ],
@@ -6783,7 +6783,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC NIX",
-      "section": "",
+      "section": "Fantasy",
       "genres": [
         "fantasy"
       ],
@@ -7214,7 +7214,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC MAH",
-      "section": "",
+      "section": "Asian, Asian American, Historical Fiction",
       "genres": [],
       "moods": [
         "brutal"
@@ -7302,7 +7302,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC KLA",
-      "section": "",
+      "section": "Family",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -7366,7 +7366,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HES",
-      "section": "",
+      "section": "African American, Historical Fiction",
       "genres": [
         "historical fiction"
       ],
@@ -7435,7 +7435,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC LEG",
-      "section": "",
+      "section": "Adventure, Fantasy",
       "genres": [
         "fantasy"
       ],
@@ -7459,7 +7459,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "920 920 DEN",
-      "section": "",
+      "section": "Bio's & Auto-bio's, War and peace",
       "genres": [],
       "moods": [
         "brutal"
@@ -7885,7 +7885,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC KOE",
-      "section": "",
+      "section": "Teen women",
       "genres": [],
       "moods": [],
       "themes": [
@@ -8095,7 +8095,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC ACH",
-      "section": "",
+      "section": "African, Ethnic studies",
       "genres": [
         "historical fiction"
       ],
@@ -8635,7 +8635,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC LEG",
-      "section": "",
+      "section": "Fantasy",
       "genres": [
         "fantasy"
       ],
@@ -8658,7 +8658,7 @@
       "copies_total": 1,
       "copies_available": 0,
       "call_number": "FIC BAL",
-      "section": "",
+      "section": "African American",
       "genres": [
         "romance"
       ],
@@ -8678,9 +8678,9 @@
       "title": "Animal farm a fairy story",
       "author": "Orwell, George",
       "isbn": "0451526341",
-      "available": true,
+      "available": false,
       "copies_total": 1,
-      "copies_available": 1,
+      "copies_available": 0,
       "call_number": "FIC ORW",
       "section": "",
       "genres": [],
@@ -8852,7 +8852,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HER",
-      "section": "",
+      "section": "Science fiction",
       "genres": [
         "sci-fi",
         "adventure"
@@ -9007,7 +9007,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC REE",
-      "section": "",
+      "section": "Horror",
       "genres": [
         "fantasy"
       ],
@@ -9093,7 +9093,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "741.5 TAK",
-      "section": "",
+      "section": "Graphic novels",
       "genres": [
         "fantasy",
         "graphic novel"
@@ -9321,7 +9321,7 @@
       "copies_total": 1,
       "copies_available": 0,
       "call_number": "FIC LES",
-      "section": "",
+      "section": "African American, Historical Fiction",
       "genres": [
         "historical fiction"
       ],
@@ -9368,7 +9368,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC NES",
-      "section": "",
+      "section": "&..., DYSTOPIA",
       "genres": [
         "sci-fi"
       ],
@@ -9831,7 +9831,7 @@
       "copies_total": 2,
       "copies_available": 2,
       "call_number": "FIC SHE",
-      "section": "",
+      "section": "Horror",
       "genres": [
         "horror"
       ],
@@ -9934,7 +9934,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HER",
-      "section": "",
+      "section": "Science fiction",
       "genres": [
         "sci-fi"
       ],
@@ -10126,7 +10126,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "741.5 KUB",
-      "section": "",
+      "section": "Adventure, Family, Fantasy, Friendship, Graphic novels",
       "genres": [
         "horror",
         "fantasy",
@@ -11147,7 +11147,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC NIX",
-      "section": "",
+      "section": "Horror",
       "genres": [
         "mystery"
       ],
@@ -11404,7 +11404,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC CAM",
-      "section": "",
+      "section": "Historical Fiction",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -11556,7 +11556,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC NEU",
-      "section": "",
+      "section": "Teen women",
       "genres": [],
       "moods": [
         "brutal"
@@ -11582,7 +11582,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "811 LIS",
-      "section": "",
+      "section": "Poetry, Urban Life",
       "genres": [
         "verse novel"
       ],
@@ -11691,7 +11691,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC MYE",
-      "section": "",
+      "section": "African American",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -11712,7 +11712,7 @@
       "copies_total": 1,
       "copies_available": 0,
       "call_number": "FIC KIN",
-      "section": "",
+      "section": "Mystery / Thriller",
       "genres": [
         "sci-fi",
         "historical fiction"
@@ -12293,7 +12293,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC EAS",
-      "section": "",
+      "section": "Light reads",
       "genres": [],
       "moods": [
         "scary",
@@ -12762,7 +12762,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "305.56 EHR",
-      "section": "",
+      "section": "Politics",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -12806,7 +12806,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC BRO",
-      "section": "",
+      "section": "Mystery / Thriller",
       "genres": [],
       "moods": [],
       "themes": [
@@ -13152,7 +13152,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC JAM",
-      "section": "",
+      "section": "Horror",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -13242,7 +13242,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC FRA",
-      "section": "",
+      "section": "Teen women",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -13283,7 +13283,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC CAR",
-      "section": "",
+      "section": "DYSTOPIA, Science fiction",
       "genres": [
         "sci-fi"
       ],
@@ -13641,7 +13641,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC FOR",
-      "section": "",
+      "section": "Light reads",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -13706,7 +13706,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC CAB",
-      "section": "",
+      "section": "Fantasy, Mystery / Thriller, Teen women",
       "genres": [
         "horror"
       ],
@@ -13730,7 +13730,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "613.9 BAS",
-      "section": "",
+      "section": "Self-help, Teen women",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -13767,7 +13767,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC CAR",
-      "section": "",
+      "section": "Horror, Mystery / Thriller, War and peace",
       "genres": [
         "horror",
         "war"
@@ -13953,7 +13953,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC FRI",
-      "section": "",
+      "section": "Light reads",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -14205,7 +14205,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC REE",
-      "section": "",
+      "section": "Horror",
       "genres": [
         "horror"
       ],
@@ -14384,7 +14384,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC BRO",
-      "section": "",
+      "section": "Mystery / Thriller",
       "genres": [
         "romance"
       ],
@@ -14406,7 +14406,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC KIN",
-      "section": "",
+      "section": "Teen women",
       "genres": [],
       "moods": [
         "funny"
@@ -14480,7 +14480,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC AZU",
-      "section": "",
+      "section": "Latino",
       "genres": [
         "war"
       ],
@@ -14526,7 +14526,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC KIN",
-      "section": "",
+      "section": "Asian American",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -15005,7 +15005,7 @@
       "copies_total": 1,
       "copies_available": 0,
       "call_number": "FIC MOR",
-      "section": "",
+      "section": "Crime, Family, Historical Fiction",
       "genres": [
         "historical fiction"
       ],
@@ -15030,7 +15030,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HAU",
-      "section": "",
+      "section": "Light reads, Religion",
       "genres": [],
       "moods": [],
       "themes": [
@@ -15052,7 +15052,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC CRU",
-      "section": "",
+      "section": "Coming of age, Light reads",
       "genres": [],
       "moods": [],
       "themes": [
@@ -15122,7 +15122,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC LYN",
-      "section": "",
+      "section": "Coming of age, Humor",
       "genres": [],
       "moods": [],
       "themes": [
@@ -15144,7 +15144,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HOU",
-      "section": "",
+      "section": "African American, Disadvantaged Youth, Historical Fiction, Politics",
       "genres": [
         "historical fiction"
       ],
@@ -15742,7 +15742,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "844 CAM",
-      "section": "",
+      "section": "Literature Essays Nonfiction",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -15759,7 +15759,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC SCO",
-      "section": "",
+      "section": "Adventure, Fantasy",
       "genres": [
         "horror",
         "fantasy"
@@ -15786,7 +15786,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC FIC DEU",
-      "section": "",
+      "section": "Fantasy, Mystery / Thriller",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -15967,7 +15967,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "305.42 WOO",
-      "section": "",
+      "section": "Women's/Feminist Studies",
       "genres": [],
       "moods": [],
       "themes": [
@@ -16008,7 +16008,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC GOO",
-      "section": "",
+      "section": "Family, Light reads",
       "genres": [],
       "moods": [],
       "themes": [
@@ -16051,7 +16051,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC BUT",
-      "section": "",
+      "section": "African American",
       "genres": [
         "fantasy"
       ],
@@ -16630,7 +16630,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC BRA",
-      "section": "",
+      "section": "Horror",
       "genres": [
         "fantasy"
       ],
@@ -16771,7 +16771,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "811 POE",
-      "section": "",
+      "section": "Poetry",
       "genres": [
         "verse novel"
       ],
@@ -16815,7 +16815,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HUG",
-      "section": "",
+      "section": "Sports",
       "genres": [],
       "moods": [],
       "themes": [
@@ -16917,9 +16917,9 @@
       "title": "Jerk, California",
       "author": "Friesen, Jonathan.",
       "isbn": "0142412031",
-      "available": false,
+      "available": true,
       "copies_total": 1,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "FIC FRI",
       "section": "",
       "genres": [],
@@ -17908,7 +17908,7 @@
       "copies_total": 1,
       "copies_available": 0,
       "call_number": "FIC HRD",
-      "section": "",
+      "section": "Family",
       "genres": [
         "mystery"
       ],
@@ -17930,7 +17930,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC MAC",
-      "section": "",
+      "section": "Teen women",
       "genres": [],
       "moods": [
         "fast-paced",
@@ -17954,7 +17954,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC GOO",
-      "section": "",
+      "section": "Teen women",
       "genres": [],
       "moods": [
         "epic"
@@ -18302,7 +18302,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC GEL",
-      "section": "",
+      "section": "Fantasy, Mythology related",
       "genres": [
         "fantasy"
       ],
@@ -19097,7 +19097,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC 808.83 NOT",
-      "section": "",
+      "section": "&..., gay, Lesbian",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -19139,7 +19139,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC LEG",
-      "section": "",
+      "section": "Adventure, Fantasy",
       "genres": [
         "fantasy"
       ],
@@ -19280,7 +19280,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC MCC",
-      "section": "",
+      "section": "Historical Fiction",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -19299,7 +19299,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC KIN",
-      "section": "",
+      "section": "Humor, Romance - sweet",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -19491,7 +19491,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "LR FIC DEL",
-      "section": "",
+      "section": "Fantasy, Graphic novels",
       "genres": [
         "fantasy"
       ],
@@ -19880,7 +19880,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC NGU",
-      "section": "",
+      "section": "Asian, Romance - complicated",
       "genres": [],
       "moods": [
         "intense"
@@ -19903,7 +19903,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC EUG",
-      "section": "",
+      "section": "Family, Romance - complicated, Teen women, Tragedy",
       "genres": [],
       "moods": [
         "heartbreaking"
@@ -20318,7 +20318,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "808.8 CAM",
-      "section": "",
+      "section": "Horror",
       "genres": [
         "horror"
       ],
@@ -21189,7 +21189,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC MOS",
-      "section": "",
+      "section": "African American",
       "genres": [
         "mystery"
       ],
@@ -21258,7 +21258,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "920 JON",
-      "section": "",
+      "section": "Survival",
       "genres": [],
       "moods": [
         "brutal",
@@ -21304,7 +21304,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "378.1 COL",
-      "section": "",
+      "section": "College reference, Self-help",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -21323,7 +21323,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC KEL",
-      "section": "",
+      "section": "Asian American, Humor",
       "genres": [
         "romance"
       ],
@@ -21373,7 +21373,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC MCC",
-      "section": "",
+      "section": "Teen women",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -21393,7 +21393,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC JEN",
-      "section": "",
+      "section": "Asian American, Family",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -21413,7 +21413,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC PAR",
-      "section": "",
+      "section": "Adventure, Family, Light reads",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -21433,7 +21433,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC BRI",
-      "section": "",
+      "section": "Teen women",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -21454,7 +21454,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC ATT",
-      "section": "",
+      "section": "Historical Fiction, Teen women, War and peace",
       "genres": [
         "historical fiction"
       ],
@@ -21478,7 +21478,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "636.7 BAI",
-      "section": "",
+      "section": "Humor",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -21561,7 +21561,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "741.5 INO",
-      "section": "",
+      "section": "Graphic novels",
       "genres": [
         "graphic novel"
       ],
@@ -21582,7 +21582,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "741.5 INO",
-      "section": "",
+      "section": "Graphic novels",
       "genres": [
         "graphic novel"
       ],
@@ -21603,7 +21603,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "741.5 INO",
-      "section": "",
+      "section": "Graphic novels",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -21622,7 +21622,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "741.5 INO",
-      "section": "",
+      "section": "Graphic novels",
       "genres": [],
       "moods": [
         "dark"
@@ -23165,7 +23165,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC PAU",
-      "section": "",
+      "section": "Friendship, Moms - arrgh, Teen women",
       "genres": [],
       "moods": [],
       "themes": [
@@ -23208,7 +23208,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC CAO",
-      "section": "",
+      "section": "Asian American, Family",
       "genres": [],
       "moods": [
         "dark",
@@ -23648,7 +23648,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC BYB SC",
-      "section": "",
+      "section": "Horror, Undead and stuff",
       "genres": [
         "horror"
       ],
@@ -23820,7 +23820,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC DAR SC",
-      "section": "",
+      "section": "Horror, Scary Stories",
       "genres": [
         "horror",
         "fantasy",
@@ -24102,7 +24102,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC FRO SC",
-      "section": "",
+      "section": "Horror",
       "genres": [
         "horror"
       ],
@@ -24170,7 +24170,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC DOY",
-      "section": "",
+      "section": "Light reads",
       "genres": [],
       "moods": [
         "funny"
@@ -26838,7 +26838,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC PRE",
-      "section": "",
+      "section": "Historical Fiction, Illustrated Novels and Stories",
       "genres": [
         "historical fiction"
       ],
@@ -28849,7 +28849,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "GN 741.59 OCO",
-      "section": "",
+      "section": "Adventure, Graphic novels",
       "genres": [],
       "moods": [],
       "themes": [
@@ -29650,7 +29650,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC NES",
-      "section": "",
+      "section": "Illustrated Novels and Stories, Scary Stories",
       "genres": [],
       "moods": [
         "emotional"
@@ -30159,7 +30159,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC FLA",
-      "section": "",
+      "section": "Fantasy",
       "genres": [
         "fantasy",
         "war"
@@ -30498,9 +30498,9 @@
       "title": "Case closed.",
       "author": "Aoyama, Gōshō.",
       "isbn": "9781591165873",
-      "available": true,
+      "available": false,
       "copies_total": 1,
-      "copies_available": 1,
+      "copies_available": 0,
       "call_number": "GN FIC AOY",
       "section": "",
       "genres": [
@@ -30525,9 +30525,9 @@
       "title": "Case closed.",
       "author": "Aoyama, Gōshō.",
       "isbn": "9781591165897",
-      "available": true,
+      "available": false,
       "copies_total": 1,
-      "copies_available": 1,
+      "copies_available": 0,
       "call_number": "GN FIC AOY",
       "section": "",
       "genres": [
@@ -33489,9 +33489,9 @@
       "title": "Eve",
       "author": "Carey, Anna.",
       "isbn": "9780062048516",
-      "available": false,
+      "available": true,
       "copies_total": 1,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "FIC CAR",
       "section": "",
       "genres": [
@@ -33615,7 +33615,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "OS 920 ABD",
-      "section": "",
+      "section": "African American, Bio's & Auto-bio's, History, Science/Math, Technology",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -34631,9 +34631,9 @@
       "title": "Case closed.",
       "author": "Aoyama, Gōshō.",
       "isbn": "9781591163275",
-      "available": true,
+      "available": false,
       "copies_total": 1,
-      "copies_available": 1,
+      "copies_available": 0,
       "call_number": "GN FIC AOY",
       "section": "",
       "genres": [
@@ -37627,9 +37627,9 @@
       "title": "Inside out & back again",
       "author": "Lai, Thanhha.",
       "isbn": "0061962791",
-      "available": false,
+      "available": true,
       "copies_total": 1,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "FIC LAI",
       "section": "",
       "genres": [
@@ -38125,7 +38125,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC SC MCH",
-      "section": "",
+      "section": "Illustrated Novels and Stories, Strange Stories",
       "genres": [
         "horror"
       ],
@@ -38459,7 +38459,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC DAR SC",
-      "section": "",
+      "section": "Horror, Scary Stories",
       "genres": [
         "horror",
         "fantasy",
@@ -39111,7 +39111,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC EUL",
-      "section": "",
+      "section": "Romance - complicated",
       "genres": [],
       "moods": [],
       "themes": [
@@ -42241,7 +42241,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HAY",
-      "section": "",
+      "section": "Crime, Mystery / Thriller",
       "genres": [
         "mystery"
       ],
@@ -42331,7 +42331,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC GOL",
-      "section": "",
+      "section": "Illustrated Novels and Stories, Supernatural",
       "genres": [
         "horror",
         "adventure"
@@ -42485,7 +42485,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "741.5 JOH",
-      "section": "",
+      "section": "Adventure, Fantasy, Graphic novels",
       "genres": [
         "sci-fi",
         "graphic novel"
@@ -42891,7 +42891,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HAR",
-      "section": "",
+      "section": "Coming of age, Family",
       "genres": [],
       "moods": [],
       "themes": [
@@ -44567,9 +44567,9 @@
       "title": "Reboot",
       "author": "Tintera, Amy.",
       "isbn": "9780062217073",
-      "available": false,
+      "available": true,
       "copies_total": 1,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "FIC TIN",
       "section": "",
       "genres": [
@@ -45373,7 +45373,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC BRA SC",
-      "section": "",
+      "section": "Fantasy, Science fiction, Strange Stories",
       "genres": [
         "sci-fi"
       ],
@@ -45924,7 +45924,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC BRO",
-      "section": "",
+      "section": "Adventure, DYSTOPIA, Fantasy, Science fiction",
       "genres": [
         "horror",
         "mystery",
@@ -46932,9 +46932,9 @@
       "title": "Natural History Museum book of animal records",
       "author": "Carwardine, Mark.",
       "isbn": "1770852697",
-      "available": true,
+      "available": false,
       "copies_total": 1,
-      "copies_available": 1,
+      "copies_available": 0,
       "call_number": "591 CAR",
       "section": "",
       "genres": [],
@@ -48812,7 +48812,7 @@
       "copies_total": 2,
       "copies_available": 2,
       "call_number": "GN 741.5 BRO",
-      "section": "",
+      "section": "Adventure, African American, Ethnic studies, History, War and peace",
       "genres": [
         "historical fiction",
         "graphic novel"
@@ -48837,7 +48837,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC BAC SC",
-      "section": "",
+      "section": "Strange Stories",
       "genres": [
         "horror",
         "fantasy"
@@ -48973,7 +48973,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC AUX",
-      "section": "",
+      "section": "Fantasy, Horror, Mystery / Thriller",
       "genres": [
         "horror",
         "fantasy"
@@ -49070,7 +49070,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "305.23 NAZ",
-      "section": "",
+      "section": "Coming of age, Disadvantaged Youth, Family, Latino",
       "genres": [
         "sci-fi"
       ],
@@ -49432,7 +49432,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC MON SC",
-      "section": "",
+      "section": "Fantasy, Scary Stories, Strange Stories",
       "genres": [
         "horror",
         "romance"
@@ -51555,7 +51555,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC DOE",
-      "section": "",
+      "section": "Historical Fiction, Romance - complicated",
       "genres": [
         "historical fiction"
       ],
@@ -52629,7 +52629,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC BRO",
-      "section": "",
+      "section": "Adventure, DYSTOPIA, Fantasy, Mystery / Thriller, Science fiction",
       "genres": [
         "sci-fi",
         "romance"
@@ -53277,7 +53277,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC BRA SC",
-      "section": "",
+      "section": "Fantasy, Science fiction, Strange Stories",
       "genres": [
         "sci-fi"
       ],
@@ -53656,7 +53656,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC DOY",
-      "section": "",
+      "section": "Illustrated Novels and Stories, Mystery / Thriller",
       "genres": [
         "mystery"
       ],
@@ -54179,7 +54179,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HAW",
-      "section": "",
+      "section": "Mystery / Thriller",
       "genres": [
         "mystery"
       ],
@@ -54462,7 +54462,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "921 KAM",
-      "section": "",
+      "section": "Bio's & Auto-bio's",
       "genres": [],
       "moods": [],
       "themes": [
@@ -54926,7 +54926,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC CHR SC",
-      "section": "",
+      "section": "Mystery / Thriller",
       "genres": [
         "mystery"
       ],
@@ -56209,9 +56209,9 @@
       "title": "Hit count",
       "author": "Lynch, Chris",
       "isbn": "9781616202507",
-      "available": false,
+      "available": true,
       "copies_total": 1,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "FIC LYN",
       "section": "",
       "genres": [],
@@ -56672,7 +56672,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC PRI",
-      "section": "",
+      "section": "Friendship, Illustrated Novels and Stories, Mystery / Thriller",
       "genres": [
         "graphic novel"
       ],
@@ -57370,7 +57370,7 @@
       "copies_total": 2,
       "copies_available": 2,
       "call_number": "FIC FLO",
-      "section": "",
+      "section": "Adventure, Fantasy, Mystery / Thriller",
       "genres": [
         "romance"
       ],
@@ -57463,7 +57463,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "796.32 GOL",
-      "section": "",
+      "section": "Sports",
       "genres": [],
       "moods": [
         "brutal"
@@ -57506,7 +57506,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC RIG",
-      "section": "",
+      "section": "Illustrated Novels and Stories, Strange Stories",
       "genres": [],
       "moods": [
         "brutal"
@@ -57780,7 +57780,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC KAU",
-      "section": "",
+      "section": "Fantasy, Illustrated Novels and Stories, Science fiction",
       "genres": [
         "sci-fi"
       ],
@@ -57912,7 +57912,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC REY",
-      "section": "",
+      "section": "African American, Coming of age, Urban Life",
       "genres": [],
       "moods": [],
       "themes": [
@@ -58150,7 +58150,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC FIT",
-      "section": "",
+      "section": "Romance - sweet",
       "genres": [],
       "moods": [],
       "themes": [
@@ -58199,7 +58199,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC EMO",
-      "section": "",
+      "section": "Illustrated Novels and Stories",
       "genres": [],
       "moods": [],
       "themes": [
@@ -59741,7 +59741,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC SHE SC",
-      "section": "",
+      "section": "Scary Stories",
       "genres": [],
       "moods": [
         "scary"
@@ -59990,7 +59990,7 @@
       "copies_total": 1,
       "copies_available": 0,
       "call_number": "FIC FRY",
-      "section": "",
+      "section": "Illustrated Novels and Stories, Science fiction",
       "genres": [
         "sci-fi"
       ],
@@ -61141,7 +61141,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "364.15 CAP",
-      "section": "",
+      "section": "True Crime",
       "genres": [],
       "moods": [
         "brutal"
@@ -61275,7 +61275,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC SHE",
-      "section": "",
+      "section": "Illustrated Novels and Stories",
       "genres": [],
       "moods": [],
       "themes": [
@@ -61887,7 +61887,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "940.54 MIL",
-      "section": "",
+      "section": "African American, Ethnic studies, History, War and peace",
       "genres": [],
       "moods": [
         "brutal"
@@ -61908,7 +61908,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "940.54 BUF",
-      "section": "",
+      "section": "African American, Ethnic studies, History, War and peace",
       "genres": [],
       "moods": [
         "brutal"
@@ -61951,7 +61951,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "791.43 STA",
-      "section": "",
+      "section": "Adventure, Fantasy, Science fiction",
       "genres": [],
       "moods": [
         "brutal"
@@ -63198,7 +63198,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC ALE",
-      "section": "",
+      "section": "Coming of age, Sports",
       "genres": [],
       "moods": [],
       "themes": [
@@ -64329,7 +64329,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "GN 921 LEW",
-      "section": "",
+      "section": "African American, Ethnic studies, Graphic novels, History",
       "genres": [
         "graphic novel"
       ],
@@ -64372,9 +64372,9 @@
       "title": "Tell us something true",
       "author": "Reinhardt, Dana",
       "isbn": "9780375990663",
-      "available": false,
+      "available": true,
       "copies_total": 1,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "FIC REI",
       "section": "",
       "genres": [],
@@ -64786,7 +64786,7 @@
       "copies_total": 2,
       "copies_available": 2,
       "call_number": "FIC DAS",
-      "section": "",
+      "section": "DYSTOPIA, Fantasy, Science fiction",
       "genres": [
         "historical fiction"
       ],
@@ -64911,7 +64911,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC KAU",
-      "section": "",
+      "section": "Fantasy, Illustrated Novels and Stories, Science fiction",
       "genres": [
         "sci-fi"
       ],
@@ -64957,7 +64957,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC DIC",
-      "section": "",
+      "section": "Adventure, Fantasy, Historical Fiction, Science fiction",
       "genres": [
         "historical fiction"
       ],
@@ -64980,7 +64980,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC FIS",
-      "section": "",
+      "section": "Adventure, Fantasy, Mystery / Thriller, Science fiction",
       "genres": [
         "fantasy"
       ],
@@ -65191,7 +65191,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC JOH",
-      "section": "",
+      "section": "Adventure, Fantasy, Science fiction",
       "genres": [
         "sci-fi"
       ],
@@ -65773,7 +65773,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC ASH",
-      "section": "",
+      "section": "Coming of age, Romance - complicated",
       "genres": [],
       "moods": [],
       "themes": [
@@ -66280,7 +66280,7 @@
       "copies_total": 2,
       "copies_available": 2,
       "call_number": "FIC CHU",
-      "section": "",
+      "section": "Horror, Science fiction",
       "genres": [
         "fantasy"
       ],
@@ -66555,7 +66555,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC OPP",
-      "section": "",
+      "section": "Adventure, Coming of age, Mystery / Thriller",
       "genres": [
         "romance"
       ],
@@ -66735,7 +66735,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HUR",
-      "section": "",
+      "section": "Environmental/Climate Studies, Science fiction, Strange Stories",
       "genres": [],
       "moods": [
         "brutal",
@@ -66760,7 +66760,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HUR",
-      "section": "",
+      "section": "Mystery / Thriller, Science fiction",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -66781,7 +66781,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC HUR",
-      "section": "",
+      "section": "Mystery / Thriller, Science fiction",
       "genres": [
         "thriller"
       ],
@@ -68025,7 +68025,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC SUZ",
-      "section": "",
+      "section": "Anime chapter books, DYSTOPIA, Illustrated Novels and Stories",
       "genres": [
         "sci-fi",
         "graphic novel"
@@ -68064,9 +68064,9 @@
       "title": "AP physics 1 and 2",
       "author": "Rideout, Kenneth.",
       "isbn": "9781438002682",
-      "available": true,
+      "available": false,
       "copies_total": 1,
-      "copies_available": 1,
+      "copies_available": 0,
       "call_number": "530 RID",
       "section": "",
       "genres": [],
@@ -69718,7 +69718,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC KAW",
-      "section": "",
+      "section": "Anime chapter books, Illustrated Novels and Stories",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -71044,7 +71044,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC RIO",
-      "section": "",
+      "section": "Adventure, Fantasy, Mythology related",
       "genres": [],
       "moods": [],
       "themes": [
@@ -71384,9 +71384,9 @@
       "title": "In other lands a novel",
       "author": "Brennan, Sarah Rees",
       "isbn": "9781618731203",
-      "available": false,
+      "available": true,
       "copies_total": 1,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "FIC BRE",
       "section": "",
       "genres": [
@@ -72006,7 +72006,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "741.5 ROD",
-      "section": "",
+      "section": "Adventure, Fantasy, Graphic novels, Mythology related",
       "genres": [
         "graphic novel"
       ],
@@ -72030,7 +72030,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "595.7 STE",
-      "section": "",
+      "section": "Strange Stories",
       "genres": [],
       "moods": [
         "brutal"
@@ -72449,7 +72449,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC LEW",
-      "section": "",
+      "section": "Illustrated Novels and Stories",
       "genres": [
         "fantasy"
       ],
@@ -72523,7 +72523,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "741.5 AMA",
-      "section": "",
+      "section": "Adventure, Graphic novels, Historical Fiction",
       "genres": [
         "historical fiction",
         "graphic novel"
@@ -72564,7 +72564,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "305.8 COA",
-      "section": "",
+      "section": "African American, Ethnic studies, History, Politics",
       "genres": [],
       "moods": [
         "brutal"
@@ -72586,7 +72586,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC JEM",
-      "section": "",
+      "section": "Adventure, DYSTOPIA, Fantasy, Science fiction",
       "genres": [],
       "moods": [
         "dark"
@@ -72950,7 +72950,7 @@
       "copies_total": 2,
       "copies_available": 2,
       "call_number": "GN FIC COA",
-      "section": "",
+      "section": "Adventure, African",
       "genres": [
         "historical fiction"
       ],
@@ -73473,7 +73473,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "796.32 GOL",
-      "section": "",
+      "section": "Sports",
       "genres": [],
       "moods": [
         "brutal"
@@ -73590,7 +73590,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "796.08 JON",
-      "section": "",
+      "section": "African American, Sports",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -73796,7 +73796,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "364.1 PAT",
-      "section": "",
+      "section": "Bio's & Auto-bio's, Gang and street life, Street, True Crime",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -74311,7 +74311,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC SCH",
-      "section": "",
+      "section": "Fantasy",
       "genres": [
         "fantasy",
         "sci-fi"
@@ -74404,7 +74404,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC RUC",
-      "section": "",
+      "section": "Adventure, Fantasy, Science fiction",
       "genres": [
         "sci-fi"
       ],
@@ -75102,7 +75102,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC CHU",
-      "section": "",
+      "section": "Horror, Scary Stories",
       "genres": [],
       "moods": [
         "scary"
@@ -75457,7 +75457,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC DIC",
-      "section": "",
+      "section": "Fantasy, Historical Fiction, Strange Stories",
       "genres": [
         "historical fiction"
       ],
@@ -77251,7 +77251,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "FIC KIL",
-      "section": "",
+      "section": "Coming of age, Historical Fiction",
       "genres": [],
       "moods": [
         "intense"
@@ -77294,7 +77294,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "791.45 SPE",
-      "section": "",
+      "section": "Humor",
       "genres": [],
       "moods": [],
       "themes": [],
@@ -77457,7 +77457,7 @@
       "copies_total": 1,
       "copies_available": 1,
       "call_number": "GN FIC DEL",
-      "section": "",
+      "section": "Adventure, Mystery / Thriller",
       "genres": [
         "mystery"
       ],
@@ -84539,9 +84539,9 @@
       "title": "Scary stories to tell in the dark, three books to chill your bones",
       "author": "Schwartz, Alvin",
       "isbn": "9780062968975",
-      "available": false,
+      "available": true,
       "copies_total": 1,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "398.2 SCH",
       "section": "",
       "genres": [],
@@ -85965,9 +85965,9 @@
       "title": "College essay essentials a step-by-step guide to writing a successful college admission essay",
       "author": "Sawyer, Ethan",
       "isbn": "9781492635123",
-      "available": true,
+      "available": false,
       "copies_total": 1,
-      "copies_available": 1,
+      "copies_available": 0,
       "call_number": "378.1 SAW",
       "section": "",
       "genres": [],
@@ -91054,9 +91054,9 @@
       "title": "Almost American girl an illustrated memoir",
       "author": "Ha, Robin",
       "isbn": "9780062685100",
-      "available": false,
+      "available": true,
       "copies_total": 1,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "GN 973.04 HA",
       "section": "",
       "genres": [
@@ -94365,9 +94365,9 @@
       "title": "JoJo's bizarre adventure.",
       "author": "Araki, Hirohiko",
       "isbn": "9781421578798",
-      "available": true,
+      "available": false,
       "copies_total": 1,
-      "copies_available": 1,
+      "copies_available": 0,
       "call_number": "GN FIC ARA",
       "section": "",
       "genres": [
@@ -97787,9 +97787,9 @@
       "title": "The witch hunter",
       "author": "Boecker, Virginia.",
       "isbn": "9780316327190",
-      "available": false,
+      "available": true,
       "copies_total": 1,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "FIC BOE",
       "section": "",
       "genres": [
@@ -105098,9 +105098,9 @@
       "title": "JoJo's bizarre adventure.",
       "author": "Araki, Hirohiko",
       "isbn": "9781421578804",
-      "available": true,
+      "available": false,
       "copies_total": 1,
-      "copies_available": 1,
+      "copies_available": 0,
       "call_number": "GN FIC ARA",
       "section": "",
       "genres": [
@@ -115586,7 +115586,7 @@
       "copies_total": 1,
       "copies_available": 0,
       "call_number": "FIC WAL",
-      "section": "",
+      "section": "DYSTOPIA, Dystopian, Survival, Suspense",
       "genres": [
         "thriller"
       ],
@@ -116581,9 +116581,9 @@
       "title": "Chloe and the Kaishao boys",
       "author": "Coyiuto, Mae",
       "isbn": "9780593461631",
-      "available": false,
+      "available": true,
       "copies_total": 1,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "FIC COY",
       "section": "",
       "genres": [],
@@ -120408,9 +120408,9 @@
       "title": "Sasaki and Miyano official comic anthology",
       "author": "Harusono, Sho",
       "isbn": "9781975366469",
-      "available": false,
+      "available": true,
       "copies_total": 1,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "GN FIC HAR",
       "section": "",
       "genres": [
@@ -122266,9 +122266,9 @@
       "title": "Snowglobe",
       "author": "Park, Soyoung",
       "isbn": "9780593484982",
-      "available": false,
+      "available": true,
       "copies_total": 1,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "FIC PAR",
       "section": "",
       "genres": [
@@ -124322,9 +124322,9 @@
       "title": "Two sides to every murder",
       "author": "Valentine, Danielle.",
       "isbn": "9780593352052",
-      "available": false,
+      "available": true,
       "copies_total": 2,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "FIC VAL",
       "section": "",
       "genres": [
@@ -124686,9 +124686,9 @@
       "title": "A certain hunger a novel",
       "author": "Summers, Chelsea G.",
       "isbn": "9781951213435",
-      "available": false,
+      "available": true,
       "copies_total": 1,
-      "copies_available": 0,
+      "copies_available": 1,
       "call_number": "FIC SUM",
       "section": "",
       "genres": [
