@@ -5291,6 +5291,7 @@
       "series_number": null,
       "genres": [
         "graphic novel",
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -12395,6 +12396,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -13360,6 +13362,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -15907,6 +15910,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -15937,6 +15941,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -16684,6 +16689,7 @@
       "series_number": 9,
       "genres": [
         "graphic novel",
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -21831,7 +21837,9 @@
       "ar_points": "",
       "series_name": null,
       "series_number": null,
-      "genres": [],
+      "genres": [
+        "how-to"
+      ],
       "moods": [
         "quick read"
       ],
@@ -22897,6 +22905,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -24064,6 +24073,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -27677,7 +27687,9 @@
       "ar_points": "",
       "series_name": null,
       "series_number": null,
-      "genres": [],
+      "genres": [
+        "how-to"
+      ],
       "moods": [
         "quick read"
       ],
@@ -28254,6 +28266,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -31071,6 +31084,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -33923,7 +33937,8 @@
       "series_name": "Naruto",
       "series_number": 25,
       "genres": [
-        "graphic novel"
+        "graphic novel",
+        "how-to"
       ],
       "moods": [
         "quick read"
@@ -33955,7 +33970,8 @@
       "series_name": "Naruto",
       "series_number": 26,
       "genres": [
-        "graphic novel"
+        "graphic novel",
+        "how-to"
       ],
       "moods": [
         "quick read"
@@ -35100,6 +35116,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "fiction"
       ],
       "moods": [],
@@ -38242,6 +38259,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [],
@@ -38270,6 +38288,7 @@
       "series_number": 42,
       "genres": [
         "graphic novel",
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -41859,6 +41878,7 @@
       "genres": [
         "horror",
         "graphic novel",
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -42088,6 +42108,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -57740,6 +57761,7 @@
       "series_name": "CHERUB",
       "series_number": 5,
       "genres": [
+        "how-to",
         "fiction"
       ],
       "moods": [],
@@ -64455,6 +64477,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -68065,6 +68088,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -69875,6 +69899,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [],
@@ -70332,7 +70357,8 @@
       "series_name": null,
       "series_number": null,
       "genres": [
-        "graphic novel"
+        "graphic novel",
+        "how-to"
       ],
       "moods": [],
       "themes": [],
@@ -73941,6 +73967,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -116694,7 +116721,9 @@
       "ar_points": "",
       "series_name": "Demon slayer =",
       "series_number": 2,
-      "genres": [],
+      "genres": [
+        "how-to"
+      ],
       "moods": [],
       "themes": [
         "family"
@@ -141323,7 +141352,8 @@
         "fantasy",
         "historical fiction",
         "graphic novel",
-        "adventure"
+        "adventure",
+        "how-to"
       ],
       "moods": [
         "fast-paced",
@@ -141642,7 +141672,8 @@
       "series_number": 18,
       "genres": [
         "fantasy",
-        "graphic novel"
+        "graphic novel",
+        "how-to"
       ],
       "moods": [
         "brutal",
@@ -144904,7 +144935,8 @@
       "series_name": null,
       "series_number": null,
       "genres": [
-        "graphic novel"
+        "graphic novel",
+        "how-to"
       ],
       "moods": [],
       "themes": [
@@ -146449,7 +146481,8 @@
       "genres": [
         "sci-fi",
         "dystopian",
-        "adventure"
+        "adventure",
+        "how-to"
       ],
       "moods": [
         "fast-paced",
@@ -146480,7 +146513,8 @@
       "series_name": "Fist of the North Star",
       "series_number": 4,
       "genres": [
-        "graphic novel"
+        "graphic novel",
+        "how-to"
       ],
       "moods": [
         "brutal"
@@ -148495,6 +148529,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "fiction"
       ],
       "moods": [
@@ -155201,6 +155236,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -158127,6 +158163,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [],
@@ -160963,6 +161000,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -164218,6 +164256,7 @@
       "series_name": null,
       "series_number": null,
       "genres": [
+        "how-to",
         "nonfiction"
       ],
       "moods": [
@@ -174296,7 +174335,8 @@
       "series_number": 28,
       "genres": [
         "horror",
-        "graphic novel"
+        "graphic novel",
+        "how-to"
       ],
       "moods": [
         "scary"
@@ -174360,7 +174400,8 @@
       "genres": [
         "horror",
         "fantasy",
-        "graphic novel"
+        "graphic novel",
+        "how-to"
       ],
       "moods": [
         "scary"
@@ -174729,7 +174770,8 @@
       "series_name": "Demon Slayer, kimetsu no yaiba",
       "series_number": 7,
       "genres": [
-        "graphic novel"
+        "graphic novel",
+        "how-to"
       ],
       "moods": [],
       "themes": [
