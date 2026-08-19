@@ -379,6 +379,60 @@
     }
   };
 
+  function extractPageFilter(qRaw){
+    const q = qRaw.toLowerCase();
+    let m;
+    if((m = q.match(/(?:between\s+)?(\d+)\s*(?:-|to|and)\s*(\d+)\s*pages?/))){
+      return {min: parseInt(m[1]), max: parseInt(m[2])};
+    }
+    if((m = q.match(/(?:under|less than|fewer than|shorter than|below)\s+(\d+)\s*pages?/))){
+      return {min: 0, max: parseInt(m[1])};
+    }
+    if((m = q.match(/(?:over|more than|longer than|above)\s+(\d+)\s*pages?/))){
+      return {min: parseInt(m[1]), max: Infinity};
+    }
+    if((m = q.match(/(?:about|around|approximately|roughly)\s+(\d+)\s*pages?/))){
+      const n = parseInt(m[1]);
+      return {min: Math.max(0, n-30), max: n+30};
+    }
+    return null;
+  }
+
+  function isSameSeriesOrWork(refTitle, candidateTitle){
+    const stop = new Set(['the','and','of','a','an','in','to','for','graphic','novel','edition']);
+    const words = t => t.toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(w=>w.length>3 && !stop.has(w));
+    const refWords = words(refTitle);
+    const candWords = words(candidateTitle);
+    if(refWords.length === 0) return false;
+    const overlap = refWords.filter(w=>candWords.includes(w));
+    return overlap.length >= Math.min(2, refWords.length);
+  }
+
+  function findReferenceBook(qRaw, catalog){
+    const m = qRaw.match(/(?:similar to|like|comparable to|in the style of|read-alikes? for|readalikes? for)\s+(.+?)(?:[.?!]|$)/i);
+    if(!m) return null;
+    const ref = m[1].trim().toLowerCase();
+    if(ref.length < 3) return null;
+
+    let best = null, bestScore = 0;
+    catalog.forEach(b=>{
+      const t = b.title.toLowerCase();
+      if(t.includes(ref) || ref.includes(t)){
+        const score = Math.min(t.length, ref.length);
+        if(score > bestScore){ bestScore = score; best = b; }
+      }
+    });
+    if(best) return best;
+
+    const refWords = ref.split(/\s+/).filter(w=>w.length>3);
+    catalog.forEach(b=>{
+      const t = b.title.toLowerCase();
+      const matches = refWords.filter(w=>t.includes(w)).length;
+      if(matches > 0 && matches > bestScore){ bestScore = matches; best = b; }
+    });
+    return best;
+  }
+
   function expandQuery(qRaw){
     const q = " " + qRaw.toLowerCase() + " ";
     const found = {genres:new Set(), moods:new Set(), themes:new Set(), protagonist:new Set()};
@@ -409,6 +463,15 @@
     rawQuery.toLowerCase().split(/[^a-z]+/).filter(w=>w.length>3).forEach(w=>{
       if(haystack.includes(w)) score += 0.5;
     });
+
+    // Manga/graphic novel volumes tend to dominate results by sheer count
+    // (each volume of a series is its own catalog entry sharing near-
+    // identical tags), which can crowd out other good matches. Deprioritize
+    // unless the student actually asked for manga/graphic novels/comics.
+    const wantsGraphicNovel = /manga|graphic novel|comic/i.test(rawQuery);
+    if(g.has('graphic novel') && !wantsGraphicNovel){
+      score *= 0.15;
+    }
 
     return score;
   }
@@ -522,20 +585,51 @@
     }
 
     const found = expandQuery(rawQuery);
-    const available = CATALOG.filter(b=>b.available && (b.copies_available||0) > 0);
-    const scored = available
-      .map(b=>({book:b, score:scoreBook(b, found, rawQuery)}))
-      .filter(x=>x.score > 0)
+
+    // "Similar to X" — find the real referenced book, borrow its own tags
+    // as extra search signal, and exclude it from results (recommending
+    // the same book back isn't useful).
+    const refBook = findReferenceBook(rawQuery, CATALOG);
+    let excludeIds = new Set();
+    if(refBook){
+      excludeIds = new Set(
+        CATALOG.filter(b=>isSameSeriesOrWork(refBook.title, b.title)).map(b=>b.id)
+      );
+      (refBook.genres||[]).forEach(g=>found.genres.add(g));
+      (refBook.moods||[]).forEach(m=>found.moods.add(m));
+      (refBook.themes||[]).forEach(t=>found.themes.add(t));
+      (refBook.protagonist||[]).forEach(p=>found.protagonist.add(p));
+    }
+
+    // Explicit page-count constraints are a hard filter, not a soft
+    // preference — a book outside the stated range isn't a valid answer
+    // to "books between 100-150 pages," however well it scores otherwise.
+    const pageFilter = extractPageFilter(rawQuery);
+
+    let pool = CATALOG.filter(b=>b.available && (b.copies_available||0) > 0 && !excludeIds.has(b.id));
+    if(pageFilter){
+      pool = pool.filter(b=>b.page_count && b.page_count >= pageFilter.min && b.page_count <= pageFilter.max);
+    }
+
+    const scored = pool
+      .map(b=>({book:b, score: refBook ? scoreBook(b, found, rawQuery) + 0.01 : scoreBook(b, found, rawQuery)}))
+      .filter(x=>x.score > 0 || refBook)  // with a reference book, tag overlap alone can legitimately be the whole signal
       .sort((a,b)=>b.score - a.score);
 
     const top5 = scored.slice(0,15);
 
     const outOfStockMatches = CATALOG
-      .filter(b=>!(b.available && (b.copies_available||0) > 0))
+      .filter(b=>!(b.available && (b.copies_available||0) > 0) && !excludeIds.has(b.id))
       .map(b=>({book:b, score:scoreBook(b, found, rawQuery)}))
       .filter(x=>x.score > 0).length;
 
     let html = '<p class="results-heading">Recommended for you</p>';
+    if(refBook){
+      html = `<p class="results-heading">Similar to "${escapeHTML(refBook.title)}"</p>`;
+    }
+    if(pageFilter){
+      html += `<p class="checked-out-note" style="margin-top:-8px;margin-bottom:16px;">Filtering to books between ${pageFilter.min}\u2013${pageFilter.max === Infinity ? '∞' : pageFilter.max} pages — books missing page-count data are left out rather than guessed at.</p>`;
+    }
     if(top5.length === 0){
       html += '<p class="noresults">No available books matched that closely. Try fewer or broader words — e.g. just "scary" or "funny."</p>';
     } else {
