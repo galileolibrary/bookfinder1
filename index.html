@@ -199,6 +199,15 @@
     padding:6px 10px;
     margin-top:2px;
   }
+  .card .award{
+    font-family:'Source Serif 4', serif;
+    font-size:13px;
+    color:#8a6d1a;
+    background:#fdf6e3;
+    border:1px solid #ecdba8;
+    border-radius:2px;
+    padding:5px 10px;
+  }
   .card h3{
     font-family:'Fraunces', serif;
     font-size:21px;
@@ -292,6 +301,17 @@
         <button type="button" class="chip" data-fill="fantasy with an epic adventure">fantasy adventure</button>
         <button type="button" class="chip" data-fill="a sad emotional book that will make me cry">emotional / sad</button>
         <button type="button" class="chip" data-fill="a true story or memoir">nonfiction / true story</button>
+        <button type="button" class="chip" data-fill="a mysterious thriller with plot twists">mystery &amp; twists</button>
+        <button type="button" class="chip" data-fill="a sweet romance">romance</button>
+        <button type="button" class="chip" data-fill="a dystopian sci-fi world">sci-fi / dystopian</button>
+        <button type="button" class="chip" data-fill="a graphic novel">graphic novel</button>
+        <button type="button" class="chip" data-fill="a classic novel">classic</button>
+        <button type="button" class="chip" data-fill="historical fiction set during a war">historical / war</button>
+        <button type="button" class="chip" data-fill="a book with queer main characters">LGBTQ+ characters</button>
+        <button type="button" class="chip" data-fill="a biography about someone inspiring">biography</button>
+        <button type="button" class="chip" data-fill="a story about revenge and justice">revenge / justice</button>
+        <button type="button" class="chip" data-fill="a book with a happy ending">happy ending</button>
+        <button type="button" class="chip" data-fill="an award-winning book">award-winning</button>
       </div>
       <button id="go">Get recommendations</button>
     </div>
@@ -325,6 +345,7 @@
       "historical":"historical fiction","history":"historical fiction",
       "realistic":"realistic fiction","contemporary":"contemporary",
       "nonfiction":"nonfiction","true story":"nonfiction","real story":"nonfiction","memoir":"memoir","biography":"memoir",
+      "fiction":"fiction","made up story":"fiction","novel":"fiction",
       "graphic novel":"graphic novel","comic":"graphic novel",
       "adventure":"adventure","war":"war","verse":"verse novel","poetry":"verse novel"
     },
@@ -332,7 +353,7 @@
       "scary":"scary","creepy":"creepy","spooky":"scary","dark":"dark","terrifying":"scary",
       "funny":"funny","hilarious":"funny","humor":"funny",
       "sad":"emotional","cry":"heartbreaking","emotional":"emotional","tearjerker":"heartbreaking","heavy":"heavy",
-      "fast":"fast-paced","quick":"fast-paced","short":"fast-paced",
+      "fast":"fast-paced","quick":"quick read","short":"quick read","fast read":"fast-paced",
       "epic":"epic","action":"fast-paced","suspenseful":"suspenseful","twisty":"twisty","twist":"twisty",
       "sweet":"sweet","wholesome":"sweet","cute":"sweet",
       "hopeful":"hopeful","uplifting":"hopeful","inspiring":"hopeful",
@@ -344,7 +365,10 @@
       "survival":"survival","identity":"identity","justice":"justice","social justice":"social justice",
       "trauma":"trauma","healing":"healing","first love":"first love","betrayal":"betrayal",
       "power":"power","war":"war","magic":"magic","found family":"found family","love":"love",
-      "myth":"myth","mythology":"myth","ethics":"ethics","secret":"secret societies"
+      "myth":"myth","mythology":"myth","ethics":"ethics","secret":"secret societies",
+      "classic":"classic","classics":"classic","old book":"classic","timeless":"classic",
+      "award":"award-winning","award winning":"award-winning","award-winning":"award-winning","newbery":"award-winning","caldecott":"award-winning",
+      "happy ending":"ending-happy","sad ending":"ending-sad","bittersweet ending":"ending-bittersweet"
     },
     protagonist: {
       "girl":"female","female":"female","woman":"female","she":"female","her":"female",
@@ -461,7 +485,8 @@
   function cardHTML(book, found){
     const out = !book.available || (book.copies_available||0) <= 0;
     const stampLabel = out ? "Checked out" : "On the shelf";
-    const callnum = (book.isbn ? "ISBN " + book.isbn : "");
+    const callnum = (book.isbn ? "ISBN " + book.isbn : "") + (book.page_count ? " · " + book.page_count + " pages" : "") + (book.ar_level ? " · AR " + book.ar_level : "");
+    const awardLine = (book.awards && book.awards.length) ? `<div class="award">🏆 ${escapeHTML(book.awards[0])}</div>` : '';
     const findIt = [book.section, book.call_number].filter(Boolean).join(' · ');
     return `
       <div class="card">
@@ -470,6 +495,7 @@
         <h3>${escapeHTML(book.title)}</h3>
         <div class="author">${escapeHTML(book.author||'')}</div>
         <p class="why">${escapeHTML(whyLine(book, found))}</p>
+        ${awardLine}
         ${findIt ? `<div class="findit">📍 Find it: ${escapeHTML(findIt)}</div>` : ''}
         <div class="tags">
           ${(book.genres||[]).slice(0,2).map(t=>`<span class="tag">${escapeHTML(t)}</span>`).join('')}
@@ -502,7 +528,7 @@
       .filter(x=>x.score > 0)
       .sort((a,b)=>b.score - a.score);
 
-    const top5 = scored.slice(0,8);
+    const top5 = scored.slice(0,15);
 
     const outOfStockMatches = CATALOG
       .filter(b=>!(b.available && (b.copies_available||0) > 0))
