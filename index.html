@@ -398,6 +398,10 @@
     return null;
   }
 
+  function normalizeAuthor(a){
+    return (a || '').toLowerCase().replace(/[.,]+$/,'').trim();
+  }
+
   function isSameSeriesOrWork(refTitle, candidateTitle){
     const stop = new Set(['the','and','of','a','an','in','to','for','graphic','novel','edition']);
     const words = t => t.toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(w=>w.length>3 && !stop.has(w));
@@ -409,28 +413,41 @@
   }
 
   function findReferenceBook(qRaw, catalog){
-    const m = qRaw.match(/(?:similar to|like|comparable to|in the style of|read-alikes? for|readalikes? for)\s+(.+?)(?:[.?!]|$)/i);
+    const m = qRaw.match(/(?:similar\s+(?:books?|novels?|titles?)?\s*to|comparable\s+to|in the (?:style|vein) of|along the lines of|reminds?\s+me\s+of|something\s+like|read-?alikes?\s+for|readalikes?\s+for|in the same vein as|if i (?:liked|loved|enjoyed)|what should i read (?:if|after) i (?:liked|loved|enjoyed|read)|like)\s+(.+?)(?:[.?!]|$)/i);
     if(!m) return null;
     const ref = m[1].trim().toLowerCase();
     if(ref.length < 3) return null;
 
-    let best = null, bestScore = 0;
+    // When multiple editions share a title (e.g. a graphic-novel adaptation
+    // vs. the original prose novel), prefer the non-graphic-novel edition —
+    // it's more likely what a student means by the title, and matters a lot
+    // here since the WRONG edition's author would make author-based
+    // exclusion fail silently (excluding the adapter, not the real author).
+    function pickBest(candidates){
+      const nonGN = candidates.filter(c => !(c.book.genres||[]).includes('graphic novel'));
+      const pool = (nonGN.length ? nonGN : candidates).slice().sort((a,b)=>b.score-a.score);
+      return pool[0].book;
+    }
+
+    const substrCandidates = [];
     catalog.forEach(b=>{
       const t = b.title.toLowerCase();
       if(t.includes(ref) || ref.includes(t)){
-        const score = Math.min(t.length, ref.length);
-        if(score > bestScore){ bestScore = score; best = b; }
+        substrCandidates.push({book:b, score: Math.min(t.length, ref.length)});
       }
     });
-    if(best) return best;
+    if(substrCandidates.length) return pickBest(substrCandidates);
 
     const refWords = ref.split(/\s+/).filter(w=>w.length>3);
+    const wordCandidates = [];
     catalog.forEach(b=>{
       const t = b.title.toLowerCase();
       const matches = refWords.filter(w=>t.includes(w)).length;
-      if(matches > 0 && matches > bestScore){ bestScore = matches; best = b; }
+      if(matches > 0) wordCandidates.push({book:b, score: matches});
     });
-    return best;
+    if(wordCandidates.length) return pickBest(wordCandidates);
+
+    return null;
   }
 
   function expandQuery(qRaw){
@@ -592,8 +609,12 @@
     const refBook = findReferenceBook(rawQuery, CATALOG);
     let excludeIds = new Set();
     if(refBook){
+      const refAuthor = normalizeAuthor(refBook.author);
       excludeIds = new Set(
-        CATALOG.filter(b=>isSameSeriesOrWork(refBook.title, b.title)).map(b=>b.id)
+        CATALOG.filter(b =>
+          isSameSeriesOrWork(refBook.title, b.title) ||
+          (refAuthor && normalizeAuthor(b.author) === refAuthor)
+        ).map(b=>b.id)
       );
       (refBook.genres||[]).forEach(g=>found.genres.add(g));
       (refBook.moods||[]).forEach(m=>found.moods.add(m));
