@@ -27,6 +27,7 @@
         "quick read"
       ],
       "themes": [
+        "drawing",
         "classic"
       ],
       "protagonist": [
@@ -130,6 +131,7 @@
         "quick read"
       ],
       "themes": [
+        "drawing",
         "classic",
         "award-winning"
       ],
@@ -1620,6 +1622,7 @@
       ],
       "moods": [],
       "themes": [
+        "drawing",
         "classic"
       ],
       "protagonist": [
@@ -2974,6 +2977,7 @@
         "funny"
       ],
       "themes": [
+        "drawing",
         "award-winning"
       ],
       "protagonist": [
@@ -5297,7 +5301,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -6238,7 +6244,9 @@
         "scary",
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -7083,7 +7091,9 @@
       "series_number": null,
       "genres": [],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -8473,7 +8483,9 @@
         "nonfiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -13368,7 +13380,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [],
       "summary": "Step-by-step examples explain how to draw fantasy space scenes, space aliens, and space vehicles.",
       "catalog_url": "https://follett.sfusd.edu"
@@ -18243,7 +18257,9 @@
         "historical fiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -18334,7 +18350,9 @@
       "series_number": null,
       "genres": [],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -21456,7 +21474,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -21843,7 +21863,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [],
       "summary": "An introduction to drawing that provides step-by-step instructions for drawing a wide range of popular subjects, including wildlife, people, nature, and buildings.",
       "catalog_url": "https://follett.sfusd.edu"
@@ -22601,7 +22623,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -27693,7 +27717,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [],
       "summary": "Contains step-by-step instructions for ten drawing projects for beginniners, discusses various drawing techniques, and includes advice on selecting charcoals, chalks, pencils, crayons, and paper.",
       "catalog_url": "https://follett.sfusd.edu"
@@ -27889,6 +27915,7 @@
       ],
       "moods": [],
       "themes": [
+        "drawing",
         "classic"
       ],
       "protagonist": [],
@@ -28272,7 +28299,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -29674,7 +29703,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male",
         "Black"
@@ -31421,7 +31452,9 @@
         "nonfiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male",
@@ -38175,7 +38208,8 @@
       ],
       "moods": [],
       "themes": [
-        "myth"
+        "myth",
+        "drawing"
       ],
       "protagonist": [
         "male",
@@ -38294,7 +38328,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -40461,7 +40497,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -47065,7 +47103,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -51808,7 +51848,8 @@
         "quick read"
       ],
       "themes": [
-        "magic"
+        "magic",
+        "drawing"
       ],
       "protagonist": [
         "female",
@@ -57702,7 +57743,9 @@
         "nonfiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -57735,7 +57778,8 @@
         "quick read"
       ],
       "themes": [
-        "myth"
+        "myth",
+        "drawing"
       ],
       "protagonist": [
         "female",
@@ -60167,7 +60211,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -61034,7 +61080,9 @@
         "fiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -62335,7 +62383,8 @@
         "intense"
       ],
       "themes": [
-        "survival"
+        "survival",
+        "drawing"
       ],
       "protagonist": [
         "female",
@@ -64359,7 +64408,9 @@
         "nonfiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -67561,7 +67612,8 @@
         "quick read"
       ],
       "themes": [
-        "family"
+        "family",
+        "drawing"
       ],
       "protagonist": [
         "female",
@@ -67746,7 +67798,9 @@
       "moods": [
         "brutal"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -68585,7 +68639,8 @@
         "emotional"
       ],
       "themes": [
-        "grief"
+        "grief",
+        "drawing"
       ],
       "protagonist": [
         "male"
@@ -71202,7 +71257,9 @@
         "nonfiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -73886,7 +73943,9 @@
         "nonfiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -75855,7 +75914,8 @@
       "themes": [
         "friendship",
         "family",
-        "first love"
+        "first love",
+        "drawing"
       ],
       "protagonist": [
         "female",
@@ -76055,7 +76115,9 @@
         "graphic novel"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -77005,7 +77067,8 @@
         "intense"
       ],
       "themes": [
-        "survival"
+        "survival",
+        "drawing"
       ],
       "protagonist": [
         "male"
@@ -80005,7 +80068,9 @@
       "moods": [
         "funny"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male",
         "queer"
@@ -80343,7 +80408,9 @@
       "moods": [
         "funny"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male",
         "queer"
@@ -80785,7 +80852,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -81003,7 +81072,9 @@
         "nonfiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -82566,7 +82637,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -82970,7 +83043,9 @@
         "brutal",
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -85740,6 +85815,7 @@
       ],
       "moods": [],
       "themes": [
+        "drawing",
         "award-winning"
       ],
       "protagonist": [
@@ -91909,7 +91985,9 @@
         "nonfiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -94534,7 +94612,9 @@
       "moods": [
         "creepy"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -98651,7 +98731,8 @@
       ],
       "moods": [],
       "themes": [
-        "magic"
+        "magic",
+        "drawing"
       ],
       "protagonist": [
         "male"
@@ -98748,7 +98829,8 @@
         "intense"
       ],
       "themes": [
-        "survival"
+        "survival",
+        "drawing"
       ],
       "protagonist": [
         "male"
@@ -102483,7 +102565,8 @@
       ],
       "moods": [],
       "themes": [
-        "trauma"
+        "trauma",
+        "drawing"
       ],
       "protagonist": [
         "female",
@@ -104105,7 +104188,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -104539,7 +104624,9 @@
         "nonfiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -104719,7 +104806,8 @@
       ],
       "moods": [],
       "themes": [
-        "identity"
+        "identity",
+        "drawing"
       ],
       "protagonist": [
         "female",
@@ -105043,7 +105131,9 @@
         "funny",
         "brutal"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -112275,7 +112365,9 @@
         "nonfiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male",
         "Black"
@@ -116970,7 +117062,9 @@
         "brutal",
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -117180,7 +117274,8 @@
       ],
       "themes": [
         "family",
-        "power"
+        "power",
+        "drawing"
       ],
       "protagonist": [
         "female",
@@ -119408,7 +119503,9 @@
         "nonfiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -119625,7 +119722,9 @@
         "nonfiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -121867,6 +121966,7 @@
       "themes": [
         "family",
         "power",
+        "drawing",
         "award-winning"
       ],
       "protagonist": [
@@ -124508,7 +124608,9 @@
         "brutal",
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male",
@@ -129196,7 +129298,9 @@
         "fiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -129940,7 +130044,8 @@
       "genres": [],
       "moods": [],
       "themes": [
-        "grief"
+        "grief",
+        "drawing"
       ],
       "protagonist": [
         "female",
@@ -130957,7 +131062,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -132450,7 +132557,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -136122,6 +136231,7 @@
       ],
       "themes": [
         "justice",
+        "drawing",
         "award-winning"
       ],
       "protagonist": [
@@ -137467,6 +137577,7 @@
       ],
       "themes": [
         "power",
+        "drawing",
         "award-winning"
       ],
       "protagonist": [
@@ -137799,7 +137910,9 @@
         "graphic novel"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male",
@@ -141054,7 +141167,8 @@
         "quick read"
       ],
       "themes": [
-        "survival"
+        "survival",
+        "drawing"
       ],
       "protagonist": [
         "female",
@@ -143713,7 +143827,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [],
       "summary": "Text and illustrations look at a career in engineering.",
       "catalog_url": "https://follett.sfusd.edu"
@@ -144412,7 +144528,9 @@
         "brutal",
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -144442,7 +144560,8 @@
         "quick read"
       ],
       "themes": [
-        "magic"
+        "magic",
+        "drawing"
       ],
       "protagonist": [
         "male"
@@ -144472,7 +144591,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -145541,7 +145662,9 @@
         "brutal",
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "male"
       ],
@@ -147949,6 +148072,7 @@
         "fast-paced"
       ],
       "themes": [
+        "drawing",
         "award-winning"
       ],
       "protagonist": [
@@ -155409,7 +155533,8 @@
       ],
       "themes": [
         "friendship",
-        "grief"
+        "grief",
+        "drawing"
       ],
       "protagonist": [
         "female",
@@ -155976,7 +156101,8 @@
       ],
       "moods": [],
       "themes": [
-        "justice"
+        "justice",
+        "drawing"
       ],
       "protagonist": [
         "male",
@@ -156369,7 +156495,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -159517,7 +159645,9 @@
       "moods": [
         "hopeful"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male"
@@ -160603,7 +160733,9 @@
         "graphic novel"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male",
@@ -162915,6 +163047,7 @@
       "themes": [
         "betrayal",
         "myth",
+        "drawing",
         "award-winning"
       ],
       "protagonist": [
@@ -163514,6 +163647,7 @@
       ],
       "themes": [
         "survival",
+        "drawing",
         "award-winning"
       ],
       "protagonist": [
@@ -164785,7 +164919,9 @@
       "moods": [
         "quick read"
       ],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male",
@@ -166343,7 +166479,8 @@
       ],
       "themes": [
         "family",
-        "grief"
+        "grief",
+        "drawing"
       ],
       "protagonist": [
         "female",
@@ -166746,6 +166883,7 @@
       "themes": [
         "betrayal",
         "myth",
+        "drawing",
         "award-winning"
       ],
       "protagonist": [
@@ -167447,6 +167585,7 @@
       ],
       "themes": [
         "friendship",
+        "drawing",
         "award-winning"
       ],
       "protagonist": [
@@ -168089,6 +168228,7 @@
         "family",
         "grief",
         "survival",
+        "drawing",
         "award-winning"
       ],
       "protagonist": [
@@ -172812,6 +172952,7 @@
         "grief",
         "power",
         "magic",
+        "drawing",
         "award-winning"
       ],
       "protagonist": [
@@ -174861,7 +175002,8 @@
         "emotional"
       ],
       "themes": [
-        "grief"
+        "grief",
+        "drawing"
       ],
       "protagonist": [
         "female",
@@ -177872,6 +178014,7 @@
         "brutal"
       ],
       "themes": [
+        "drawing",
         "award-winning"
       ],
       "protagonist": [
@@ -178180,6 +178323,7 @@
         "funny"
       ],
       "themes": [
+        "drawing",
         "award-winning"
       ],
       "protagonist": [
@@ -179702,7 +179846,9 @@
         "fiction"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male",
@@ -180309,7 +180455,9 @@
         "graphic novel"
       ],
       "moods": [],
-      "themes": [],
+      "themes": [
+        "drawing"
+      ],
       "protagonist": [
         "female",
         "male",
