@@ -453,11 +453,13 @@
   }
 
   function expandQuery(qRaw){
-    const q = " " + qRaw.toLowerCase() + " ";
+    const q = qRaw.toLowerCase();
     const found = {genres:new Set(), moods:new Set(), themes:new Set(), protagonist:new Set()};
     for(const cat of Object.keys(SYN)){
       for(const key in SYN[cat]){
-        if(q.includes(key)){
+        const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const re = new RegExp('\\b' + escaped + '\\b', 'i');
+        if(re.test(q)){
           found[cat].add(SYN[cat][key]);
         }
       }
@@ -477,18 +479,38 @@
     found.themes.forEach(v=>{ if(t.has(v.toLowerCase())) score += 2; });
     found.protagonist.forEach(v=>{ if(p.has(v.toLowerCase())) score += 3; });
 
-    // loose full-text fallback so odd phrasing still matches something
-    const haystack = (book.title+" "+book.author+" "+book.summary+" "+(book.genres||[]).join(" ")+" "+(book.moods||[]).join(" ")+" "+(book.themes||[]).join(" ")).toLowerCase();
-    rawQuery.toLowerCase().split(/[^a-z]+/).filter(w=>w.length>3).forEach(w=>{
+    // loose full-text fallback so odd phrasing still matches something —
+    // now includes real subject headings, not just the summary blurb
+    const haystack = (book.title+" "+book.author+" "+book.summary+" "+(book.subjects_text||"")+" "+(book.genres||[]).join(" ")+" "+(book.moods||[]).join(" ")+" "+(book.themes||[]).join(" ")).toLowerCase();
+    const STOPWORDS = new Set(['book','books','story','stories','about','with','that','this','have','from','some','please','want','looking','find','something','read','reading']);
+    const queryWords = rawQuery.toLowerCase().split(/[^a-z]+/).filter(w=>w.length>3);
+    queryWords.forEach(w=>{
       if(haystack.includes(w)) score += 0.5;
     });
+
+    // Phrase-level bonus: reading "vietnam war" as a PHRASE, not just two
+    // independent word hits, is the actual fix for literal keyword-binding —
+    // a book about WWII containing the word "war" alone shouldn't tie with
+    // a book that's specifically, contiguously about "vietnam war." Uses a
+    // lower length cutoff than the single-word fallback above, since short
+    // but meaningful words (war, spy, art) need to survive to form phrases.
+    const allWords = rawQuery.toLowerCase().split(/[^a-z]+/).filter(w=>w.length>0);
+    const significantWords = allWords.filter(w=>w.length>2 && !STOPWORDS.has(w));
+    for(let len = significantWords.length; len >= 2; len--){
+      for(let start = 0; start + len <= significantWords.length; start++){
+        const phrase = significantWords.slice(start, start+len).join(' ');
+        if(haystack.includes(phrase)){
+          score += len * 4;  // longer contiguous phrase matches = much stronger signal
+        }
+      }
+    }
 
     // Manga/graphic novel volumes tend to dominate results by sheer count
     // (each volume of a series is its own catalog entry sharing near-
     // identical tags), which can crowd out other good matches. Deprioritize
     // unless the student actually asked for manga/graphic novels/comics.
     const wantsGraphicNovel = /manga|graphic novel|comic/i.test(rawQuery);
-    if(g.has('graphic novel') && !wantsGraphicNovel){
+    if(g.has('graphic novel') && !wantsGraphicNovel && !g.has('how-to')){
       score *= 0.15;
     }
 
