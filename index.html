@@ -568,6 +568,7 @@
     const callnum = (book.isbn ? "ISBN " + book.isbn : "") + (book.page_count ? " · " + book.page_count + " pages" : "") + (book.ar_level ? " · AR " + book.ar_level : "");
     const awardLine = (book.awards && book.awards.length) ? `<div class="award">🏆 ${escapeHTML(book.awards[0])}</div>` : '';
     const findIt = [book.section, book.call_number].filter(Boolean).join(' · ');
+    const seriesNote = book.series_name ? `<div class="findit">📚 Book ${book.series_number} of "${escapeHTML(book.series_name)}"</div>` : '';
     return `
       <div class="card">
         <span class="stamp ${out?'out':''}">${stampLabel}</span>
@@ -576,6 +577,7 @@
         <div class="author">${escapeHTML(book.author||'')}</div>
         <p class="why">${escapeHTML(whyLine(book, found))}</p>
         ${awardLine}
+        ${seriesNote}
         ${findIt ? `<div class="findit">📍 Find it: ${escapeHTML(findIt)}</div>` : ''}
         <div class="tags">
           ${(book.genres||[]).slice(0,2).map(t=>`<span class="tag">${escapeHTML(t)}</span>`).join('')}
@@ -587,6 +589,29 @@
 
   function escapeHTML(s){
     return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function keepOnlyIfFirstVolumeAvailable(pool, fullCatalog){
+    // "Book 3 is available" isn't good enough if book 1 isn't — a new
+    // reader needs to actually be able to start the series. So: find the
+    // TRUE lowest volume number per series across the WHOLE catalog
+    // (checked out or not), and only ever surface a series in results if
+    // that true first volume is the one that's actually available.
+    const trueFirstNumBySeries = new Map();
+    fullCatalog.forEach(b=>{
+      if(!b.series_name) return;
+      const key = b.series_name.toLowerCase();
+      const num = (b.series_number === null || b.series_number === undefined) ? Infinity : b.series_number;
+      const current = trueFirstNumBySeries.get(key);
+      if(current === undefined || num < current){
+        trueFirstNumBySeries.set(key, num);
+      }
+    });
+    return pool.filter(b=>{
+      if(!b.series_name) return true;
+      const trueFirst = trueFirstNumBySeries.get(b.series_name.toLowerCase());
+      return b.series_number === trueFirst;
+    });
   }
 
   function runSearch(){
@@ -631,6 +656,7 @@
     if(pageFilter){
       pool = pool.filter(b=>b.page_count && b.page_count >= pageFilter.min && b.page_count <= pageFilter.max);
     }
+    pool = keepOnlyIfFirstVolumeAvailable(pool, CATALOG);
 
     const scored = pool
       .map(b=>({book:b, score: refBook ? scoreBook(b, found, rawQuery) + 0.01 : scoreBook(b, found, rawQuery)}))
