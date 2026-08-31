@@ -203,7 +203,7 @@
     return found;
   }
 
-  const STOPWORDS = new Set(['book','books','story','stories','about','with','that','this','have','from','some','please','want','looking','find','something','read','reading']);
+  const STOPWORDS = new Set(['book','books','story','stories','about','with','that','this','have','from','some','please','want','looking','find','something','read','reading','like','the','and','was','were','are','for']);
 
   function scoreBook(book, found, rawQuery){
     let score = 0;
