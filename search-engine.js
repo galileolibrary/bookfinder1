@@ -281,7 +281,6 @@
     const pageFilter = extractPageFilter(rawQuery);
     const lexileFilter = extractLexileFilter(rawQuery);
     const confidenceFilter = extractConfidenceFilter(rawQuery);
-    const effectiveLexileFilter = lexileFilter || confidenceFilter;
 
     let pool = CATALOG.filter(b=>b.available && (b.copies_available||0) > 0 && !excludeIds.has(b.id));
     if(pageFilter){
@@ -295,9 +294,10 @@
     }
     pool = keepOnlyIfFirstVolumeAvailable(pool, CATALOG);
 
+    const hasHardFilter = !!(refBook || pageFilter || lexileFilter || confidenceFilter);
     const scored = pool
       .map(b=>({book:b, score: refBook ? scoreBook(b, found, rawQuery) + 0.01 : scoreBook(b, found, rawQuery)}))
-      .filter(x=>x.score > 0 || refBook)
+      .filter(x=>x.score > 0 || hasHardFilter)
       .sort((a,b)=>b.score - a.score);
 
     const outOfStockMatches = CATALOG
