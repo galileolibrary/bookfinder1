@@ -145,6 +145,10 @@
     const ref = m[1].trim().toLowerCase();
     if(ref.length < 3) return null;
 
+    function stripArticle(s){
+      return s.replace(/^(a|an|the)\s+/i, '');
+    }
+
     function pickBest(candidates){
       const nonGN = candidates.filter(c => !(c.book.genres||[]).includes('graphic novel'));
       const pool = (nonGN.length ? nonGN : candidates).slice().sort((a,b)=>b.score-a.score);
@@ -154,8 +158,20 @@
     const substrCandidates = [];
     catalog.forEach(b=>{
       const t = b.title.toLowerCase();
-      if(t.includes(ref) || ref.includes(t)){
-        substrCandidates.push({book:b, score: Math.min(t.length, ref.length)});
+      const tStripped = stripArticle(t);
+      // Also check with a leading article stripped — "game of thrones" (how
+      // someone would naturally say it) vs. "A game of thrones" (the real
+      // cataloged title) would otherwise never match at all, since neither
+      // string literally contains the other. Real bug found via testing:
+      // this let a completely unrelated, trivially-short-titled book
+      // ("Game" by Barry Lyga) win by default since it was the only thing
+      // that satisfied the naive substring check.
+      if(t.includes(ref) || ref.includes(t) || tStripped.includes(ref) || ref.includes(tStripped)){
+        const bestLen = Math.max(
+          Math.min(t.length, ref.length),
+          Math.min(tStripped.length, ref.length)
+        );
+        substrCandidates.push({book:b, score: bestLen});
       }
     });
     if(substrCandidates.length) return pickBest(substrCandidates);
