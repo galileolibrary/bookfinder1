@@ -32,10 +32,12 @@
       "historical":"historical fiction","history":"historical fiction",
       "realistic":"realistic fiction","contemporary":"contemporary",
       "nonfiction":"nonfiction","true story":"nonfiction","real story":"nonfiction","memoir":"memoir","biography":"memoir",
-      "fiction":"fiction","made up story":"fiction","novel":"fiction",
+      "fiction":"fiction","made up story":"fiction",
       "graphic novel":"graphic novel","comic":"graphic novel",
       "adventure":"adventure","war":"war","verse":"verse novel","poetry":"verse novel",
-      "how to draw":"how-to","how to":"how-to","instructional":"how-to","step by step":"how-to","tutorial":"how-to","diy":"how-to"
+      "spy":"spy","spies":"spy","espionage":"spy","secret agent":"spy","undercover":"spy",
+      "how to draw":"how-to","how to":"how-to","instructional":"how-to","step by step":"how-to","tutorial":"how-to","diy":"how-to",
+      "superhero":"superhero","superheroes":"superhero","paranormal":"paranormal"
     },
     moods: {
       "scary":"scary","creepy":"creepy","spooky":"scary","dark":"dark","terrifying":"scary",
@@ -56,11 +58,14 @@
       "myth":"myth","mythology":"myth","ethics":"ethics","secret":"secret societies",
       "draw":"drawing","drawing":"drawing","how to draw":"drawing","cartooning":"drawing","sketching":"drawing","illustration":"drawing",
       "classic":"classic","classics":"classic","old book":"classic","timeless":"classic",
+      "coming of age":"coming-of-age","coming-of-age":"coming-of-age","orphan":"orphan","orphans":"orphan",
+      "missing person":"missing person","missing persons":"missing person","good vs evil":"good vs evil","good versus evil":"good vs evil",
       "award":"award-winning","award winning":"award-winning","award-winning":"award-winning","newbery":"award-winning","caldecott":"award-winning",
       "happy ending":"ending-happy","sad ending":"ending-sad","bittersweet ending":"ending-bittersweet"
     },
     protagonist: {
       "girl":"female","female":"female","woman":"female","she":"female","her":"female",
+      "teen":"teen","teenager":"teen","teenage":"teen","teens":"teen","high schooler":"teen","high school student":"teen",
       "boy":"male","male":"male","he":"male","him":"male",
       "lgbtq":"queer","queer":"queer","gay":"queer",
       "black":"Black","latina":"Latina","latino":"Latina",
@@ -83,6 +88,39 @@
     if((m = q.match(/(?:about|around|approximately|roughly)\s+(\d+)\s*pages?/))){
       const n = parseInt(m[1]);
       return {min: Math.max(0, n-30), max: n+30};
+    }
+    return null;
+  }
+
+  function extractConfidenceFilter(qRaw){
+    // Translates a self-rated 1-10 reading confidence into a Lexile range —
+    // students generally don't know their own Lexile number, but can rate
+    // how confident they feel picking up a book. Low confidence maps to a
+    // lower, more accessible range; this is intentionally generous (still
+    // real, worthwhile YA content) rather than pointing toward children's
+    // books — the goal is an accessible read, not a babyish one.
+    const q = qRaw.toLowerCase();
+    let m = q.match(/(\d{1,2})\s*\/\s*10/) || q.match(/(\d{1,2})\s*out of\s*10/) || q.match(/confidence[^\d]{0,10}(\d{1,2})/);
+    if(!m) return null;
+    let n = parseInt(m[1]);
+    if(n < 1 || n > 10) return null;
+    const base = 250 + (n - 1) * 90; // 1 -> 250L, 10 -> 1060L+ (open-ended)
+    if(n >= 10) return {min: base, max: Infinity, confidence: n};
+    return {min: base, max: base + 220, confidence: n};
+  }
+
+  function extractLexileFilter(qRaw){
+    const q = qRaw.toLowerCase();
+    let m;
+    if(/lexile/.test(q) && (m = q.match(/(\d+)\s*(?:-|to|and)\s*(\d+)/))){
+      return {min: parseInt(m[1]), max: parseInt(m[2])};
+    }
+    if((m = q.match(/lexile\s+(?:under|below|less than)\s+(\d+)/))){
+      return {min: 0, max: parseInt(m[1])};
+    }
+    if((m = q.match(/lexile\s+(\d+)/))){
+      const n = parseInt(m[1]);
+      return {min: Math.max(0, n-100), max: n+100};
     }
     return null;
   }
@@ -169,11 +207,20 @@
       if(haystack.includes(w)) score += 0.5;
     });
 
+    // Phrase matching: build candidates from the FULL ordered word sequence
+    // (including short connector words like "to"/"of"), not the stopword-
+    // filtered list — stripping "to" would make "enemies to lovers" or
+    // "coming of age" impossible to ever reconstruct as a contiguous phrase,
+    // since the real text needs that connector word to match at all. Still
+    // require at least 2 SUBSTANTIAL words per phrase so we don't waste time
+    // scoring meaningless connector-only fragments like "to the."
     const allWords = rawQuery.toLowerCase().split(/[^a-z]+/).filter(w=>w.length>0);
-    const significantWords = allWords.filter(w=>w.length>2 && !STOPWORDS.has(w));
-    for(let len = significantWords.length; len >= 2; len--){
-      for(let start = 0; start + len <= significantWords.length; start++){
-        const phrase = significantWords.slice(start, start+len).join(' ');
+    for(let len = allWords.length; len >= 2; len--){
+      for(let start = 0; start + len <= allWords.length; start++){
+        const phraseWords = allWords.slice(start, start+len);
+        const substantialCount = phraseWords.filter(w=>w.length>2 && !STOPWORDS.has(w)).length;
+        if(substantialCount < 2) continue;
+        const phrase = phraseWords.join(' ');
         if(haystack.includes(phrase)){
           score += len * 4;
         }
@@ -189,13 +236,7 @@
   }
 
   function whyLine(book, found){
-    const reasons = [];
-    found.genres.forEach(v=>{ if((book.genres||[]).map(s=>s.toLowerCase()).includes(v.toLowerCase())) reasons.push(v); });
-    found.moods.forEach(v=>{ if((book.moods||[]).map(s=>s.toLowerCase()).includes(v.toLowerCase())) reasons.push(v); });
-    found.themes.forEach(v=>{ if((book.themes||[]).map(s=>s.toLowerCase()).includes(v.toLowerCase())) reasons.push(v); });
-    if(reasons.length===0) return book.summary;
-    const uniq = [...new Set(reasons)].slice(0,3);
-    return "Matches on " + uniq.join(", ") + ". " + book.summary;
+    return book.summary;
   }
 
   function keepOnlyIfFirstVolumeAvailable(pool, fullCatalog){
@@ -238,10 +279,19 @@
     }
 
     const pageFilter = extractPageFilter(rawQuery);
+    const lexileFilter = extractLexileFilter(rawQuery);
+    const confidenceFilter = extractConfidenceFilter(rawQuery);
+    const effectiveLexileFilter = lexileFilter || confidenceFilter;
 
     let pool = CATALOG.filter(b=>b.available && (b.copies_available||0) > 0 && !excludeIds.has(b.id));
     if(pageFilter){
       pool = pool.filter(b=>b.page_count && b.page_count >= pageFilter.min && b.page_count <= pageFilter.max);
+    }
+    if(lexileFilter){
+      pool = pool.filter(b=>b.lexile_score && b.lexile_score >= lexileFilter.min && b.lexile_score <= lexileFilter.max);
+    }
+    if(confidenceFilter){
+      pool = pool.filter(b=>b.lexile_score && b.lexile_score >= confidenceFilter.min && b.lexile_score <= confidenceFilter.max);
     }
     pool = keepOnlyIfFirstVolumeAvailable(pool, CATALOG);
 
@@ -255,11 +305,11 @@
       .map(b=>({book:b, score:scoreBook(b, found, rawQuery)}))
       .filter(x=>x.score > 0).length;
 
-    return { scored, found, refBook, pageFilter, outOfStockMatches };
+    return { scored, found, refBook, pageFilter, lexileFilter, confidenceFilter, outOfStockMatches };
   }
 
   return {
-    SYN, extractPageFilter, normalizeAuthor, isSameSeriesOrWork,
+    SYN, extractPageFilter, extractLexileFilter, extractConfidenceFilter, normalizeAuthor, isSameSeriesOrWork,
     findReferenceBook, expandQuery, scoreBook, whyLine,
     keepOnlyIfFirstVolumeAvailable, search
   };

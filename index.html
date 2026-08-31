@@ -312,6 +312,7 @@
         <button type="button" class="chip" data-fill="a story about revenge and justice">revenge / justice</button>
         <button type="button" class="chip" data-fill="a book with a happy ending">happy ending</button>
         <button type="button" class="chip" data-fill="an award-winning book">award-winning</button>
+        <button type="button" class="chip" data-fill="a great story, my reading confidence is 4/10">reading confidence 4/10</button>
       </div>
       <button id="go">Get recommendations</button>
     </div>
@@ -430,6 +431,7 @@
   let lastFound = null;
   let lastRefBook = null;
   let lastPageFilter = null;
+  let lastConfidenceFilter = null;
   let lastOutOfStockMatches = 0;
   let shownCount = PAGE_SIZE;
 
@@ -443,6 +445,9 @@
     }
     if(lastPageFilter){
       html += `<p class="checked-out-note" style="margin-top:-8px;margin-bottom:16px;">Filtering to books between ${lastPageFilter.min}\u2013${lastPageFilter.max === Infinity ? '∞' : lastPageFilter.max} pages — books missing page-count data are left out rather than guessed at.</p>`;
+    }
+    if(lastConfidenceFilter){
+      html += `<p class="checked-out-note" style="margin-top:-8px;margin-bottom:16px;">Finding books that match how you're feeling as a reader right now 📚</p>`;
     }
     if(visible.length === 0){
       html += '<p class="noresults">No available books matched that closely. Try fewer or broader words — e.g. just "scary" or "funny."</p>';
@@ -486,6 +491,7 @@
     lastFound = result.found;
     lastRefBook = result.refBook;
     lastPageFilter = result.pageFilter;
+    lastConfidenceFilter = result.confidenceFilter;
     lastOutOfStockMatches = result.outOfStockMatches;
     shownCount = PAGE_SIZE;
 
