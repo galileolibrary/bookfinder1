@@ -286,10 +286,16 @@
         if(substantialCount < 2) continue;
         const phrase = phraseWords.join(' ');
         if(haystack.includes(phrase)){
-          score += len * 4;
+          score += len * 2.5;
         }
       }
     }
+
+    // A small, always-on quality nudge for real literary recognition among
+    // already-relevant results — previously this data only mattered if a
+    // student explicitly typed "award-winning." Gated on score > 0 so it
+    // never makes an otherwise-irrelevant award-winning book show up.
+    if(score > 0 && t.has('award-winning')) score += 1.5;
 
     const wantsGraphicNovel = /manga|graphic novel|comic/i.test(rawQuery);
     if(g.has('graphic novel') && !wantsGraphicNovel && !g.has('how-to')){
