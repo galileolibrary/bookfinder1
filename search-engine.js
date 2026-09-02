@@ -139,33 +139,38 @@
     return overlap.length >= Math.min(2, refWords.length);
   }
 
-  function findReferenceBook(qRaw, catalog){
+  function extractReferencePhrase(qRaw){
     const m = qRaw.match(/(?:similar\s+(?:books?|novels?|titles?)?\s*to|comparable\s+to|in the (?:style|vein) of|along the lines of|reminds?\s+me\s+of|something\s+like|read-?alikes?\s+for|readalikes?\s+for|in the same vein as|if i (?:liked|loved|enjoyed)|what should i read (?:if|after) i (?:liked|loved|enjoyed|read)|like)\s+(.+?)(?:[.?!]|$)/i);
     if(!m) return null;
     const ref = m[1].trim().toLowerCase();
     if(ref.length < 3) return null;
+    return ref;
+  }
 
-    function stripArticle(s){
-      return s.replace(/^(a|an|the)\s+/i, '');
-    }
+  function stripArticle(s){
+    return s.replace(/^(a|an|the)\s+/i, '');
+  }
 
-    function pickBest(candidates){
-      const nonGN = candidates.filter(c => !(c.book.genres||[]).includes('graphic novel'));
-      const pool = (nonGN.length ? nonGN : candidates).slice().sort((a,b)=>b.score-a.score);
-      return pool[0].book;
-    }
+  // Returns {book, score} for the best candidate, or null. Exposing the
+  // match score (not just the winning book) matters — it's what lets the
+  // book-vs-media comparison below be a fair, quality-based decision
+  // instead of "book always wins ties." Real bug found via testing: "The
+  // Stranger" (a short, unrelated novel) used to beat a full, correct
+  // "Stranger Things" media match purely by being checked first, even
+  // though it only covers half the reference phrase.
+  function pickBestBook(candidates){
+    const nonGN = candidates.filter(c => !(c.book.genres||[]).includes('graphic novel'));
+    const pool = (nonGN.length ? nonGN : candidates).slice().sort((a,b)=>b.score-a.score);
+    return pool[0];
+  }
 
+  // Confident tier: the reference text and a real catalog title substring-
+  // match each other (leading-article-tolerant).
+  function findReferenceBookStrict(ref, catalog){
     const substrCandidates = [];
     catalog.forEach(b=>{
       const t = b.title.toLowerCase();
       const tStripped = stripArticle(t);
-      // Also check with a leading article stripped — "game of thrones" (how
-      // someone would naturally say it) vs. "A game of thrones" (the real
-      // cataloged title) would otherwise never match at all, since neither
-      // string literally contains the other. Real bug found via testing:
-      // this let a completely unrelated, trivially-short-titled book
-      // ("Game" by Barry Lyga) win by default since it was the only thing
-      // that satisfied the naive substring check.
       if(t.includes(ref) || ref.includes(t) || tStripped.includes(ref) || ref.includes(tStripped)){
         const bestLen = Math.max(
           Math.min(t.length, ref.length),
@@ -174,8 +179,13 @@
         substrCandidates.push({book:b, score: bestLen});
       }
     });
-    if(substrCandidates.length) return pickBest(substrCandidates);
+    return substrCandidates.length ? pickBestBook(substrCandidates) : null;
+  }
 
+  // Loose tier: only shared individual words, no real substring match —
+  // low confidence, since two unrelated titles can share a common word by
+  // coincidence. Used only as a last resort, after media has a chance.
+  function findReferenceBookLoose(ref, catalog){
     const refWords = ref.split(/\s+/).filter(w=>w.length>3);
     const wordCandidates = [];
     catalog.forEach(b=>{
@@ -183,9 +193,45 @@
       const matches = refWords.filter(w=>t.includes(w)).length;
       if(matches > 0) wordCandidates.push({book:b, score: matches});
     });
-    if(wordCandidates.length) return pickBest(wordCandidates);
+    return wordCandidates.length ? pickBestBook(wordCandidates) : null;
+  }
 
-    return null;
+  function findReferenceBook(qRaw, catalog){
+    const ref = extractReferencePhrase(qRaw);
+    if(!ref) return null;
+    const strict = findReferenceBookStrict(ref, catalog);
+    if(strict) return strict.book;
+    const loose = findReferenceBookLoose(ref, catalog);
+    return loose ? loose.book : null;
+  }
+
+  // Curated movie/TV -> tag mapping (media_overrides.json), for students
+  // who know a show/movie but not a book. Matched by substring containment
+  // against the curated key, either direction. Returns {media, score} so
+  // its match quality can be compared fairly against a book match.
+  //
+  // Entries flagged "risky": true (common English words used as titles —
+  // "You", "It", "Wednesday") only match when the FULL query also contains
+  // an explicit media signal word. Without this, "a mystery like you would
+  // enjoy" or "something like you described" would silently, incorrectly
+  // match the show "You" every time — confirmed as a real false positive
+  // during testing, not a hypothetical one.
+  const MEDIA_SIGNAL_WORDS = /\b(show|series|movie|film|netflix|tv|television|watch|watched|watching|season|episode)\b/i;
+
+  function findReferenceMedia(ref, mediaOverrides, fullQuery){
+    let best = null, bestLen = 0;
+    for(const key in (mediaOverrides||{})){
+      if(key === '_comment') continue;
+      const entry = mediaOverrides[key];
+      if(entry.risky && !MEDIA_SIGNAL_WORDS.test(fullQuery || '')){
+        continue;
+      }
+      if(ref.includes(key) || key.includes(ref)){
+        const len = Math.min(key.length, ref.length);
+        if(len > bestLen){ bestLen = len; best = entry; }
+      }
+    }
+    return best ? {media: best, score: bestLen} : null;
   }
 
   function expandQuery(qRaw){
@@ -275,10 +321,37 @@
 
   // The full pipeline, exactly as runSearch() in index.html uses it —
   // exposed as one function so tests (and index.html) call the SAME path.
-  function search(rawQuery, CATALOG){
+  function search(rawQuery, CATALOG, MEDIA_OVERRIDES){
     const found = expandQuery(rawQuery);
 
-    const refBook = findReferenceBook(rawQuery, CATALOG);
+    const ref = extractReferencePhrase(rawQuery);
+    let refBook = null;
+    let refMedia = null;
+    if(ref){
+      const strictBookMatch = findReferenceBookStrict(ref, CATALOG);
+      const mediaMatch = findReferenceMedia(ref, MEDIA_OVERRIDES, rawQuery);
+
+      if(strictBookMatch && mediaMatch){
+        // Compare match QUALITY (how much of the reference phrase each one
+        // actually covers), not just tier — a short, generic book title
+        // shouldn't beat a full, specific media match just by being
+        // checked first. Ties favor the book, since real catalog data is
+        // more precise than a curated approximation when equally strong.
+        if(strictBookMatch.score >= mediaMatch.score){
+          refBook = strictBookMatch.book;
+        } else {
+          refMedia = mediaMatch.media;
+        }
+      } else if(strictBookMatch){
+        refBook = strictBookMatch.book;
+      } else if(mediaMatch){
+        refMedia = mediaMatch.media;
+      } else {
+        const loose = findReferenceBookLoose(ref, CATALOG);
+        if(loose) refBook = loose.book;
+      }
+    }
+
     let excludeIds = new Set();
     if(refBook){
       const refAuthor = normalizeAuthor(refBook.author);
@@ -292,6 +365,11 @@
       (refBook.moods||[]).forEach(m=>found.moods.add(m));
       (refBook.themes||[]).forEach(t=>found.themes.add(t));
       (refBook.protagonist||[]).forEach(p=>found.protagonist.add(p));
+    } else if(refMedia){
+      (refMedia.genres||[]).forEach(g=>found.genres.add(g));
+      (refMedia.moods||[]).forEach(m=>found.moods.add(m));
+      (refMedia.themes||[]).forEach(t=>found.themes.add(t));
+      (refMedia.protagonist||[]).forEach(p=>found.protagonist.add(p));
     }
 
     const pageFilter = extractPageFilter(rawQuery);
@@ -310,9 +388,9 @@
     }
     pool = keepOnlyIfFirstVolumeAvailable(pool, CATALOG);
 
-    const hasHardFilter = !!(refBook || pageFilter || lexileFilter || confidenceFilter);
+    const hasHardFilter = !!(refBook || refMedia || pageFilter || lexileFilter || confidenceFilter);
     const scored = pool
-      .map(b=>({book:b, score: refBook ? scoreBook(b, found, rawQuery) + 0.01 : scoreBook(b, found, rawQuery)}))
+      .map(b=>({book:b, score: (refBook || refMedia) ? scoreBook(b, found, rawQuery) + 0.01 : scoreBook(b, found, rawQuery)}))
       .filter(x=>x.score > 0 || hasHardFilter)
       .sort((a,b)=>b.score - a.score);
 
@@ -321,12 +399,13 @@
       .map(b=>({book:b, score:scoreBook(b, found, rawQuery)}))
       .filter(x=>x.score > 0).length;
 
-    return { scored, found, refBook, pageFilter, lexileFilter, confidenceFilter, outOfStockMatches };
+    return { scored, found, refBook, refMedia, pageFilter, lexileFilter, confidenceFilter, outOfStockMatches };
   }
 
   return {
     SYN, extractPageFilter, extractLexileFilter, extractConfidenceFilter, normalizeAuthor, isSameSeriesOrWork,
-    findReferenceBook, expandQuery, scoreBook, whyLine,
+    findReferenceBook, findReferenceBookStrict, findReferenceBookLoose, findReferenceMedia, extractReferencePhrase,
+    expandQuery, scoreBook, whyLine,
     keepOnlyIfFirstVolumeAvailable, search
   };
 

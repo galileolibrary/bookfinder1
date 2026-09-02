@@ -1,0 +1,771 @@
+{
+  "_comment": "Curated movie/TV -> book-tag mapping, so students who know a show/movie but not a book can search by it. Every value here MUST be a real tag already used elsewhere in the system (check search-engine.js SYN for the current valid list) \u2014 an invented tag here would silently never match anything. Add more titles any time a real student request isn't covered.",
+  "game of thrones": {
+    "display": "Game of Thrones",
+    "genres": [
+      "fantasy",
+      "war"
+    ],
+    "moods": [
+      "dark",
+      "epic",
+      "brutal"
+    ],
+    "themes": [
+      "power",
+      "betrayal",
+      "family",
+      "revenge"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "house of the dragon": {
+    "display": "House of the Dragon",
+    "genres": [
+      "fantasy",
+      "war"
+    ],
+    "moods": [
+      "dark",
+      "epic",
+      "brutal"
+    ],
+    "themes": [
+      "power",
+      "betrayal",
+      "family"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "lord of the rings": {
+    "display": "The Lord of the Rings",
+    "genres": [
+      "fantasy",
+      "adventure",
+      "war"
+    ],
+    "moods": [
+      "epic",
+      "hopeful"
+    ],
+    "themes": [
+      "friendship",
+      "good vs evil",
+      "power"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "avatar the last airbender": {
+    "display": "Avatar: The Last Airbender",
+    "genres": [
+      "fantasy",
+      "adventure"
+    ],
+    "moods": [
+      "hopeful",
+      "epic",
+      "fun"
+    ],
+    "themes": [
+      "friendship",
+      "family",
+      "good vs evil",
+      "identity"
+    ],
+    "protagonist": [
+      "teen",
+      "ensemble"
+    ]
+  },
+  "bridgerton": {
+    "display": "Bridgerton",
+    "genres": [
+      "romance",
+      "historical fiction"
+    ],
+    "moods": [
+      "sweet",
+      "witty"
+    ],
+    "themes": [
+      "first love",
+      "family"
+    ],
+    "protagonist": [
+      "female"
+    ]
+  },
+  "the witcher": {
+    "display": "The Witcher",
+    "genres": [
+      "fantasy",
+      "adventure"
+    ],
+    "moods": [
+      "dark",
+      "gritty",
+      "epic"
+    ],
+    "themes": [
+      "power",
+      "good vs evil"
+    ],
+    "protagonist": [
+      "male"
+    ]
+  },
+  "shadow and bone": {
+    "display": "Shadow and Bone",
+    "genres": [
+      "fantasy",
+      "adventure"
+    ],
+    "moods": [
+      "epic",
+      "dark"
+    ],
+    "themes": [
+      "power",
+      "found family",
+      "magic"
+    ],
+    "protagonist": [
+      "female",
+      "ensemble"
+    ]
+  },
+  "stranger things": {
+    "display": "Stranger Things",
+    "genres": [
+      "sci-fi",
+      "horror"
+    ],
+    "moods": [
+      "scary",
+      "suspenseful"
+    ],
+    "themes": [
+      "friendship",
+      "survival"
+    ],
+    "protagonist": [
+      "teen",
+      "ensemble"
+    ]
+  },
+  "star wars": {
+    "display": "Star Wars",
+    "genres": [
+      "sci-fi",
+      "adventure",
+      "war"
+    ],
+    "moods": [
+      "epic",
+      "fun"
+    ],
+    "themes": [
+      "good vs evil",
+      "family",
+      "found family"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "black mirror": {
+    "display": "Black Mirror",
+    "genres": [
+      "sci-fi",
+      "dystopian"
+    ],
+    "moods": [
+      "dark",
+      "thought-provoking",
+      "twisty"
+    ],
+    "themes": [
+      "ethics",
+      "power"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "westworld": {
+    "display": "Westworld",
+    "genres": [
+      "sci-fi",
+      "dystopian"
+    ],
+    "moods": [
+      "dark",
+      "thought-provoking",
+      "twisty"
+    ],
+    "themes": [
+      "identity",
+      "ethics",
+      "power"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "the walking dead": {
+    "display": "The Walking Dead",
+    "genres": [
+      "horror",
+      "dystopian"
+    ],
+    "moods": [
+      "scary",
+      "brutal",
+      "intense"
+    ],
+    "themes": [
+      "survival",
+      "family"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "stranger things season": {
+    "display": "Stranger Things",
+    "genres": [
+      "sci-fi",
+      "horror"
+    ],
+    "moods": [
+      "scary",
+      "suspenseful"
+    ],
+    "themes": [
+      "friendship",
+      "survival"
+    ],
+    "protagonist": [
+      "teen",
+      "ensemble"
+    ]
+  },
+  "american horror story": {
+    "display": "American Horror Story",
+    "genres": [
+      "horror",
+      "paranormal"
+    ],
+    "moods": [
+      "scary",
+      "dark",
+      "twisty"
+    ],
+    "themes": [
+      "identity"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "the conjuring": {
+    "display": "The Conjuring",
+    "genres": [
+      "horror",
+      "paranormal"
+    ],
+    "moods": [
+      "scary",
+      "creepy",
+      "intense"
+    ],
+    "themes": [],
+    "protagonist": []
+  },
+  "it": {
+    "display": "It",
+    "genres": [
+      "horror"
+    ],
+    "moods": [
+      "scary",
+      "creepy"
+    ],
+    "themes": [
+      "friendship",
+      "survival"
+    ],
+    "protagonist": [
+      "ensemble",
+      "teen"
+    ],
+    "risky": true
+  },
+  "wednesday": {
+    "display": "Wednesday",
+    "genres": [
+      "horror",
+      "mystery",
+      "paranormal"
+    ],
+    "moods": [
+      "dark",
+      "witty",
+      "creepy"
+    ],
+    "themes": [
+      "identity",
+      "found family"
+    ],
+    "protagonist": [
+      "female",
+      "teen"
+    ],
+    "risky": true
+  },
+  "sherlock": {
+    "display": "Sherlock",
+    "genres": [
+      "mystery",
+      "thriller"
+    ],
+    "moods": [
+      "clever",
+      "suspenseful",
+      "twisty"
+    ],
+    "themes": [
+      "justice"
+    ],
+    "protagonist": [
+      "male"
+    ]
+  },
+  "breaking bad": {
+    "display": "Breaking Bad",
+    "genres": [
+      "thriller"
+    ],
+    "moods": [
+      "dark",
+      "intense",
+      "brutal",
+      "gritty"
+    ],
+    "themes": [
+      "power",
+      "family",
+      "betrayal",
+      "ethics"
+    ],
+    "protagonist": [
+      "male"
+    ]
+  },
+  "knives out": {
+    "display": "Knives Out",
+    "genres": [
+      "mystery"
+    ],
+    "moods": [
+      "clever",
+      "witty",
+      "twisty"
+    ],
+    "themes": [
+      "justice",
+      "family"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "you": {
+    "display": "You",
+    "genres": [
+      "thriller",
+      "horror"
+    ],
+    "moods": [
+      "dark",
+      "twisty",
+      "suspenseful"
+    ],
+    "themes": [
+      "identity",
+      "betrayal"
+    ],
+    "protagonist": [
+      "male"
+    ],
+    "risky": true
+  },
+  "criminal minds": {
+    "display": "Criminal Minds",
+    "genres": [
+      "mystery",
+      "thriller"
+    ],
+    "moods": [
+      "dark",
+      "suspenseful",
+      "intense"
+    ],
+    "themes": [
+      "justice"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "riverdale": {
+    "display": "Riverdale",
+    "genres": [
+      "mystery",
+      "thriller",
+      "romance"
+    ],
+    "moods": [
+      "twisty",
+      "dark"
+    ],
+    "themes": [
+      "friendship",
+      "family",
+      "secret societies"
+    ],
+    "protagonist": [
+      "teen",
+      "ensemble"
+    ]
+  },
+  "only murders in the building": {
+    "display": "Only Murders in the Building",
+    "genres": [
+      "mystery"
+    ],
+    "moods": [
+      "clever",
+      "witty",
+      "funny"
+    ],
+    "themes": [
+      "friendship",
+      "justice"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "to all the boys ive loved before": {
+    "display": "To All the Boys I've Loved Before",
+    "genres": [
+      "romance",
+      "contemporary"
+    ],
+    "moods": [
+      "sweet",
+      "funny"
+    ],
+    "themes": [
+      "first love",
+      "family"
+    ],
+    "protagonist": [
+      "female",
+      "teen"
+    ]
+  },
+  "greys anatomy": {
+    "display": "Grey's Anatomy",
+    "genres": [
+      "romance",
+      "realistic fiction"
+    ],
+    "moods": [
+      "emotional",
+      "heartbreaking"
+    ],
+    "themes": [
+      "love",
+      "grief",
+      "friendship"
+    ],
+    "protagonist": [
+      "ensemble",
+      "female"
+    ]
+  },
+  "outer banks": {
+    "display": "Outer Banks",
+    "genres": [
+      "adventure",
+      "mystery",
+      "romance"
+    ],
+    "moods": [
+      "fast-paced",
+      "suspenseful"
+    ],
+    "themes": [
+      "friendship",
+      "justice"
+    ],
+    "protagonist": [
+      "teen",
+      "ensemble"
+    ]
+  },
+  "euphoria": {
+    "display": "Euphoria",
+    "genres": [
+      "realistic fiction",
+      "contemporary"
+    ],
+    "moods": [
+      "dark",
+      "emotional",
+      "intense",
+      "gritty"
+    ],
+    "themes": [
+      "trauma",
+      "identity",
+      "friendship"
+    ],
+    "protagonist": [
+      "teen",
+      "ensemble"
+    ]
+  },
+  "13 reasons why": {
+    "display": "13 Reasons Why",
+    "genres": [
+      "realistic fiction"
+    ],
+    "moods": [
+      "dark",
+      "emotional",
+      "heavy"
+    ],
+    "themes": [
+      "trauma",
+      "grief",
+      "identity"
+    ],
+    "protagonist": [
+      "teen"
+    ]
+  },
+  "the summer i turned pretty": {
+    "display": "The Summer I Turned Pretty",
+    "genres": [
+      "romance",
+      "contemporary"
+    ],
+    "moods": [
+      "sweet",
+      "emotional"
+    ],
+    "themes": [
+      "first love",
+      "family",
+      "friendship"
+    ],
+    "protagonist": [
+      "female",
+      "teen"
+    ]
+  },
+  "the office": {
+    "display": "The Office",
+    "genres": [
+      "realistic fiction",
+      "contemporary"
+    ],
+    "moods": [
+      "funny",
+      "witty",
+      "sweet"
+    ],
+    "themes": [
+      "friendship",
+      "family"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "brooklyn nine-nine": {
+    "display": "Brooklyn Nine-Nine",
+    "genres": [
+      "mystery",
+      "realistic fiction"
+    ],
+    "moods": [
+      "funny",
+      "witty",
+      "fun"
+    ],
+    "themes": [
+      "friendship",
+      "justice"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "never have i ever": {
+    "display": "Never Have I Ever",
+    "genres": [
+      "realistic fiction",
+      "romance",
+      "contemporary"
+    ],
+    "moods": [
+      "funny",
+      "sweet",
+      "emotional"
+    ],
+    "themes": [
+      "identity",
+      "family",
+      "first love",
+      "grief"
+    ],
+    "protagonist": [
+      "female",
+      "teen"
+    ]
+  },
+  "heartstopper": {
+    "display": "Heartstopper",
+    "genres": [
+      "romance",
+      "graphic novel",
+      "contemporary"
+    ],
+    "moods": [
+      "sweet",
+      "hopeful",
+      "emotional"
+    ],
+    "themes": [
+      "first love",
+      "identity",
+      "friendship"
+    ],
+    "protagonist": [
+      "male",
+      "queer",
+      "teen"
+    ]
+  },
+  "marvel": {
+    "display": "Marvel",
+    "genres": [
+      "superhero",
+      "sci-fi",
+      "adventure"
+    ],
+    "moods": [
+      "epic",
+      "fun",
+      "fast-paced"
+    ],
+    "themes": [
+      "good vs evil",
+      "power",
+      "identity"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "the avengers": {
+    "display": "The Avengers",
+    "genres": [
+      "superhero",
+      "sci-fi",
+      "adventure"
+    ],
+    "moods": [
+      "epic",
+      "fun",
+      "fast-paced"
+    ],
+    "themes": [
+      "good vs evil",
+      "power"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "spider-man": {
+    "display": "Spider-Man",
+    "genres": [
+      "superhero",
+      "adventure"
+    ],
+    "moods": [
+      "fun",
+      "fast-paced",
+      "hopeful"
+    ],
+    "themes": [
+      "identity",
+      "power",
+      "good vs evil"
+    ],
+    "protagonist": [
+      "male",
+      "teen"
+    ]
+  },
+  "the boys": {
+    "display": "The Boys",
+    "genres": [
+      "superhero"
+    ],
+    "moods": [
+      "dark",
+      "brutal",
+      "twisty"
+    ],
+    "themes": [
+      "power",
+      "ethics",
+      "good vs evil"
+    ],
+    "protagonist": [
+      "ensemble"
+    ]
+  },
+  "batman": {
+    "display": "Batman",
+    "genres": [
+      "superhero",
+      "mystery"
+    ],
+    "moods": [
+      "dark",
+      "brutal",
+      "intense"
+    ],
+    "themes": [
+      "justice",
+      "revenge",
+      "good vs evil"
+    ],
+    "protagonist": [
+      "male"
+    ]
+  }
+}
