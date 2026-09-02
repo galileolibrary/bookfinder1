@@ -142,7 +142,7 @@
   }
 
   function extractReferencePhrase(qRaw){
-    const m = qRaw.match(/(?:similar\s+(?:books?|novels?|titles?)?\s*to|comparable\s+to|in the (?:style|vein) of|along the lines of|reminds?\s+me\s+of|something\s+like|read-?alikes?\s+for|readalikes?\s+for|in the same vein as|if i (?:liked|loved|enjoyed)|what should i read (?:if|after) i (?:liked|loved|enjoyed|read)|like)\s+(.+?)(?:[.?!]|$)/i);
+    const m = qRaw.match(/(?:similar\s+(?:books?|novels?|titles?)?\s*to|comparable\s+to|in the (?:style|vein) of|along the lines of|reminds?\s+me\s+of|something\s+like|read-?alikes?\s+for|readalikes?\s+for|in the same vein as|(?:if\s+)?i\s+(?:liked|loved|enjoyed|watched)|what should i read (?:if|after) i (?:liked|loved|enjoyed|read)|like)\s+(.+?)(?:[.?!]|$)/i);
     if(!m) return null;
     const ref = m[1].trim().toLowerCase();
     if(ref.length < 3) return null;
