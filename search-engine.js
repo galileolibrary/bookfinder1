@@ -36,6 +36,7 @@
       "graphic novel":"graphic novel","comic":"graphic novel",
       "adventure":"adventure","war":"war","verse":"verse novel","poetry":"verse novel",
       "spy":"spy","spies":"spy","espionage":"spy","secret agent":"spy","undercover":"spy",
+      "heist":"heist","heists":"heist","robbery":"heist","burglary":"heist",
       "how to draw":"how-to","how to":"how-to","instructional":"how-to","step by step":"how-to","tutorial":"how-to","diy":"how-to",
       "superhero":"superhero","superheroes":"superhero","paranormal":"paranormal"
     },
@@ -55,6 +56,7 @@
       "survival":"survival","identity":"identity","justice":"justice","social justice":"social justice",
       "trauma":"trauma","healing":"healing","first love":"first love","betrayal":"betrayal",
       "power":"power","war":"war","magic":"magic","found family":"found family","love":"love",
+      "class conflict":"class conflict","social class":"class conflict","rich and poor":"class conflict","class differences":"class conflict",
       "myth":"myth","mythology":"myth","ethics":"ethics","secret":"secret societies",
       "draw":"drawing","drawing":"drawing","how to draw":"drawing","cartooning":"drawing","sketching":"drawing","illustration":"drawing",
       "classic":"classic","classics":"classic","old book":"classic","timeless":"classic",
