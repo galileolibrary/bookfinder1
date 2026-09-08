@@ -94,6 +94,25 @@
     return null;
   }
 
+  // Author-nationality filtering — the first EXCLUSION-style filter in this
+  // tool (everything else is inclusion-only). Checks negation phrasing
+  // first, since "non-American authors" should never be misread as a
+  // request FOR American authors.
+  function extractAuthorRegionFilter(qRaw){
+    const q = qRaw.toLowerCase();
+    if(/\b(non-american|not american|non american)\b/.test(q)) return {mode:'exclude', region:'american'};
+    if(/\b(international|foreign)\s+authors?\b/.test(q)) return {mode:'exclude', region:'american'};
+    if(/\bamerican\s+authors?\b/.test(q)) return {mode:'include', region:'american'};
+    if(/\b(british|english)\s+authors?\b/.test(q)) return {mode:'include', region:'british'};
+    if(/\beuropean\s+authors?\b/.test(q)) return {mode:'include', region:'european'};
+    if(/\basian\s+authors?\b/.test(q)) return {mode:'include', region:'asian'};
+    if(/\bafrican\s+authors?\b/.test(q)) return {mode:'include', region:'african'};
+    if(/\b(latin american|latinx)\s+authors?\b/.test(q)) return {mode:'include', region:'latin_american'};
+    if(/\bcanadian\s+authors?\b/.test(q)) return {mode:'include', region:'canadian'};
+    if(/\baustralian\s+authors?\b/.test(q)) return {mode:'include', region:'australian'};
+    return null;
+  }
+
   function extractConfidenceFilter(qRaw){
     // Translates a self-rated 1-10 reading confidence into a Lexile range —
     // students generally don't know their own Lexile number, but can rate
@@ -242,7 +261,11 @@
     for(const cat of Object.keys(SYN)){
       for(const key in SYN[cat]){
         const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const re = new RegExp('\\b' + escaped + '\\b', 'i');
+        // s? allows ordinary plurals ("comic"->"comics") to still match —
+        // same regression as the Python tagging side: fixing "he" hiding
+        // inside "weather" also accidentally blocked exact-singular
+        // keywords from matching their own plural forms.
+        const re = new RegExp('\\b' + escaped + 's?\\b', 'i');
         if(re.test(q)){
           found[cat].add(SYN[cat][key]);
         }
@@ -383,6 +406,7 @@
     const pageFilter = extractPageFilter(rawQuery);
     const lexileFilter = extractLexileFilter(rawQuery);
     const confidenceFilter = extractConfidenceFilter(rawQuery);
+    const authorRegionFilter = extractAuthorRegionFilter(rawQuery);
 
     let pool = CATALOG.filter(b=>b.available && (b.copies_available||0) > 0 && !excludeIds.has(b.id));
     if(pageFilter){
@@ -394,9 +418,23 @@
     if(confidenceFilter){
       pool = pool.filter(b=>b.lexile_score && b.lexile_score >= confidenceFilter.min && b.lexile_score <= confidenceFilter.max);
     }
+    if(authorRegionFilter){
+      if(authorRegionFilter.mode === 'include'){
+        // "European" is treated generously — a British author is also a
+        // reasonable answer to "European authors" for a student's purposes.
+        pool = pool.filter(b => b.author_region === authorRegionFilter.region ||
+          (authorRegionFilter.region === 'european' && b.author_region === 'british'));
+      } else {
+        // Exclusion only applies to CONFIRMED regions — a book whose author
+        // nationality we never resolved is left out entirely here too,
+        // rather than guessed as "probably fine." Same "don't recommend
+        // without confidence" principle used everywhere else in this tool.
+        pool = pool.filter(b => b.author_region && b.author_region !== authorRegionFilter.region);
+      }
+    }
     pool = keepOnlyIfFirstVolumeAvailable(pool, CATALOG);
 
-    const hasHardFilter = !!(refBook || refMedia || pageFilter || lexileFilter || confidenceFilter);
+    const hasHardFilter = !!(refBook || refMedia || pageFilter || lexileFilter || confidenceFilter || authorRegionFilter);
     const scored = pool
       .map(b=>({book:b, score: (refBook || refMedia) ? scoreBook(b, found, rawQuery) + 0.01 : scoreBook(b, found, rawQuery)}))
       .filter(x=>x.score > 0 || hasHardFilter)
@@ -407,11 +445,11 @@
       .map(b=>({book:b, score:scoreBook(b, found, rawQuery)}))
       .filter(x=>x.score > 0).length;
 
-    return { scored, found, refBook, refMedia, pageFilter, lexileFilter, confidenceFilter, outOfStockMatches };
+    return { scored, found, refBook, refMedia, pageFilter, lexileFilter, confidenceFilter, authorRegionFilter, outOfStockMatches };
   }
 
   return {
-    SYN, extractPageFilter, extractLexileFilter, extractConfidenceFilter, normalizeAuthor, isSameSeriesOrWork,
+    SYN, extractPageFilter, extractLexileFilter, extractConfidenceFilter, extractAuthorRegionFilter, normalizeAuthor, isSameSeriesOrWork,
     findReferenceBook, findReferenceBookStrict, findReferenceBookLoose, findReferenceMedia, extractReferencePhrase,
     expandQuery, scoreBook, whyLine,
     keepOnlyIfFirstVolumeAvailable, search
