@@ -61,6 +61,7 @@
       "draw":"drawing","drawing":"drawing","how to draw":"drawing","cartooning":"drawing","sketching":"drawing","illustration":"drawing",
       "classic":"classic","classics":"classic","old book":"classic","timeless":"classic",
       "coming of age":"coming-of-age","coming-of-age":"coming-of-age","orphan":"orphan","orphans":"orphan",
+      "enemies to lovers":"enemies to lovers","enemies who become lovers":"enemies to lovers","enemies who fall in love":"enemies to lovers","hate to love":"enemies to lovers","rivals who fall in love":"enemies to lovers",
       "missing person":"missing person","missing persons":"missing person","good vs evil":"good vs evil","good versus evil":"good vs evil",
       "award":"award-winning","award winning":"award-winning","award-winning":"award-winning","newbery":"award-winning","caldecott":"award-winning",
       "happy ending":"ending-happy","sad ending":"ending-sad","bittersweet ending":"ending-bittersweet"
@@ -103,13 +104,19 @@
     if(/\b(non-american|not american|non american)\b/.test(q)) return {mode:'exclude', region:'american'};
     if(/\b(international|foreign)\s+authors?\b/.test(q)) return {mode:'exclude', region:'american'};
     if(/\bamerican\s+authors?\b/.test(q)) return {mode:'include', region:'american'};
-    if(/\b(british|english)\s+authors?\b/.test(q)) return {mode:'include', region:'british'};
-    if(/\beuropean\s+authors?\b/.test(q)) return {mode:'include', region:'european'};
-    if(/\basian\s+authors?\b/.test(q)) return {mode:'include', region:'asian'};
-    if(/\bafrican\s+authors?\b/.test(q)) return {mode:'include', region:'african'};
-    if(/\b(latin american|latinx)\s+authors?\b/.test(q)) return {mode:'include', region:'latin_american'};
+    if(/\b(british|english|irish)\s+authors?\b/.test(q)) return {mode:'include', region:'british'};
+    // Specific nationality words map to the broader region we actually
+    // track — an approximation (region-level, not exact-country), but a
+    // real fix for a real gap: "Japanese author" used to silently match
+    // NOTHING in the region filter and fall through to generic keyword
+    // matching instead, surfacing books merely ABOUT Japan by any author,
+    // not actually filtered by the author's own nationality at all.
+    if(/\b(european|french|german|italian|spanish|dutch|swedish|danish|norwegian|finnish|polish|russian|portuguese)\s+authors?\b/.test(q)) return {mode:'include', region:'european'};
+    if(/\b(asian|japanese|chinese|korean|indian|vietnamese|filipino|indonesian|pakistani)\s+authors?\b/.test(q)) return {mode:'include', region:'asian'};
+    if(/\b(african|nigerian|kenyan|egyptian|south\s+african)\s+authors?\b/.test(q)) return {mode:'include', region:'african'};
+    if(/\b(latin american|latinx|mexican|brazilian|argentin(?:e|ian)|colombian|chilean)\s+authors?\b/.test(q)) return {mode:'include', region:'latin_american'};
     if(/\bcanadian\s+authors?\b/.test(q)) return {mode:'include', region:'canadian'};
-    if(/\baustralian\s+authors?\b/.test(q)) return {mode:'include', region:'australian'};
+    if(/\b(australian|new zealand)\s+authors?\b/.test(q)) return {mode:'include', region:'australian'};
     return null;
   }
 
@@ -363,16 +370,16 @@
       const mediaMatch = findReferenceMedia(ref, MEDIA_OVERRIDES, rawQuery);
 
       if(strictBookMatch && mediaMatch){
-        // Compare match QUALITY (how much of the reference phrase each one
-        // actually covers), not just tier — a short, generic book title
-        // shouldn't beat a full, specific media match just by being
-        // checked first. Ties favor the book, since real catalog data is
-        // more precise than a curated approximation when equally strong.
-        if(strictBookMatch.score >= mediaMatch.score){
-          refBook = strictBookMatch.book;
-        } else {
-          refMedia = mediaMatch.media;
-        }
+        // Both refer to the same real-world reference (a book and its
+        // screen adaptation sharing a title) — MERGE their signal rather
+        // than picking one exclusively. Real bug found via testing: a
+        // book's own MARC cataloging can be much thinner than a curated
+        // media entry ("The Summer I Turned Pretty" novel wasn't even
+        // tagged "romance" in its own catalog data), so exclusively
+        // trusting "real data over curated approximation" sometimes threw
+        // away the better signal.
+        refBook = strictBookMatch.book;
+        refMedia = mediaMatch.media;
       } else if(strictBookMatch){
         refBook = strictBookMatch.book;
       } else if(mediaMatch){
@@ -396,7 +403,8 @@
       (refBook.moods||[]).forEach(m=>found.moods.add(m));
       (refBook.themes||[]).forEach(t=>found.themes.add(t));
       (refBook.protagonist||[]).forEach(p=>found.protagonist.add(p));
-    } else if(refMedia){
+    }
+    if(refMedia){
       (refMedia.genres||[]).forEach(g=>found.genres.add(g));
       (refMedia.moods||[]).forEach(m=>found.moods.add(m));
       (refMedia.themes||[]).forEach(t=>found.themes.add(t));
