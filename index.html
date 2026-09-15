@@ -280,6 +280,59 @@
   @media (prefers-reduced-motion: reduce){
     *{transition:none !important;}
   }
+  /* Reading confidence slider — styled to fit the vintage brass/green
+     palette instead of the browser's default blue, while still standing
+     out clearly, using the same brass accent already used for focus
+     states and hover emphasis elsewhere in this design. */
+  input[type="range"]{
+    -webkit-appearance:none;
+    appearance:none;
+    height:8px;
+    border-radius:4px;
+    background:var(--lamp-green);
+    border:1px solid var(--line);
+    outline:none;
+  }
+  input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    appearance:none;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:var(--brass-bright);
+    border:2px solid var(--lamp-green-dark);
+    box-shadow:0 1px 3px rgba(0,0,0,0.3);
+    cursor:pointer;
+    margin-top:-7px;
+  }
+  input[type="range"]::-moz-range-thumb{
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:var(--brass-bright);
+    border:2px solid var(--lamp-green-dark);
+    box-shadow:0 1px 3px rgba(0,0,0,0.3);
+    cursor:pointer;
+  }
+  input[type="range"]::-webkit-slider-runnable-track{
+    height:8px;
+    border-radius:4px;
+    background:var(--lamp-green);
+  }
+  input[type="range"]::-moz-range-track{
+    height:8px;
+    border-radius:4px;
+    background:var(--lamp-green);
+  }
+  input[type="range"]::-moz-range-progress{
+    height:8px;
+    border-radius:4px;
+    background:linear-gradient(90deg, var(--brass), var(--brass-bright));
+  }
+  input[type="range"]:focus::-webkit-slider-thumb{
+    outline:3px solid var(--brass);
+    outline-offset:2px;
+  }
 </style>
 </head>
 <body>
@@ -314,8 +367,9 @@
       </div>
       <button id="go">Get recommendations</button>
     </div>
+    <div style="height:16px;"></div>
     <div class="confidence-slider-row">
-      <label for="mediaDropdown" class="field-label" style="margin-bottom:4px;">
+      <label for="mediaDropdown" class="field-label" style="margin-bottom:4px;font-weight:bold;">
         Or pick a TV show or movie you like
       </label>
       <select id="mediaDropdown" style="width:100%;padding:8px;">
@@ -323,8 +377,8 @@
       </select>
     </div>
     <div class="confidence-slider-row">
-      <label for="confidenceSlider" class="field-label" style="margin-bottom:4px;">
-        Not sure of your reading level? <span id="confidenceLabel">Optional — move the slider</span>
+      <label for="confidenceSlider" class="field-label" style="margin-bottom:4px;font-weight:bold;">
+        What's your reading confidence? Slide to match your level | <span id="confidenceLabel" style="font-weight:normal;">Optional — move the slider</span>
       </label>
       <div style="display:flex;align-items:center;gap:10px;">
         <input type="range" id="confidenceSlider" min="1" max="10" value="5" style="flex:1;" data-touched="false">
@@ -451,16 +505,31 @@
   const confidenceSlider = document.getElementById('confidenceSlider');
   const confidenceLabel = document.getElementById('confidenceLabel');
   const confidenceReset = document.getElementById('confidenceReset');
+
+  function updateConfidenceFill(){
+    // Chrome/Safari have no native "filled" progress portion the way
+    // Firefox does — this fakes it with a computed gradient so the
+    // brass fill is visible and noticeable in every browser, not just
+    // Firefox.
+    const min = Number(confidenceSlider.min), max = Number(confidenceSlider.max);
+    const pct = ((confidenceSlider.value - min) / (max - min)) * 100;
+    confidenceSlider.style.background =
+      `linear-gradient(90deg, var(--brass) 0%, var(--brass-bright) ${pct}%, var(--lamp-green) ${pct}%)`;
+  }
+  updateConfidenceFill();
+
   confidenceSlider.addEventListener('input', ()=>{
     confidenceSlider.dataset.touched = 'true';
     confidenceLabel.textContent = `Reading confidence: ${confidenceSlider.value}/10`;
     confidenceReset.style.display = 'inline-block';
+    updateConfidenceFill();
   });
   confidenceReset.addEventListener('click', ()=>{
     confidenceSlider.dataset.touched = 'false';
     confidenceSlider.value = 5;
     confidenceLabel.textContent = 'Optional — move the slider';
     confidenceReset.style.display = 'none';
+    updateConfidenceFill();
   });
 
   // ---------- Media (TV/movie) dropdown ----------
