@@ -310,11 +310,26 @@
         <button type="button" class="chip" data-fill="a book with queer main characters">LGBTQ+ characters</button>
         <button type="button" class="chip" data-fill="a biography about someone inspiring">biography</button>
         <button type="button" class="chip" data-fill="a story about revenge and justice">revenge / justice</button>
-        <button type="button" class="chip" data-fill="a book with a happy ending">happy ending</button>
         <button type="button" class="chip" data-fill="an award-winning book">award-winning</button>
-        <button type="button" class="chip" data-fill="a great story, my reading confidence is 4/10">reading confidence 4/10</button>
       </div>
       <button id="go">Get recommendations</button>
+    </div>
+    <div class="confidence-slider-row">
+      <label for="mediaDropdown" class="field-label" style="margin-bottom:4px;">
+        Or pick a TV show or movie you like
+      </label>
+      <select id="mediaDropdown" style="width:100%;padding:8px;">
+        <option value="">— loading shows/movies... —</option>
+      </select>
+    </div>
+    <div class="confidence-slider-row">
+      <label for="confidenceSlider" class="field-label" style="margin-bottom:4px;">
+        Not sure of your reading level? <span id="confidenceLabel">Optional — move the slider</span>
+      </label>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <input type="range" id="confidenceSlider" min="1" max="10" value="5" style="flex:1;" data-touched="false">
+        <button type="button" id="confidenceReset" style="display:none;font-size:0.85em;padding:4px 10px;">Clear</button>
+      </div>
     </div>
     <div class="datastatus">
       <span class="dot" id="statusDot"></span>
@@ -340,11 +355,42 @@
 
   // ---------- Catalog loading ----------
   let CATALOG = null;
+  let MEDIA_OVERRIDES = {};
 
   function setStatus(text, ok){
     document.getElementById('statusText').textContent = text;
     const dot = document.getElementById('statusDot');
     dot.classList.toggle('bad', !ok);
+  }
+
+  function loadMediaOverrides(){
+    // Best-effort, non-blocking — if this fails to load (or the file
+    // doesn't exist yet), the tool still works fine, just without
+    // movie/TV-based recommendations.
+    fetch('media_overrides.json', {cache:'no-store'})
+      .then(r=>{ if(!r.ok) throw new Error('not found'); return r.json(); })
+      .then(data=>{ MEDIA_OVERRIDES = data || {}; populateMediaDropdown(); })
+      .catch(()=>{ MEDIA_OVERRIDES = {}; });
+  }
+
+  function populateMediaDropdown(){
+    const select = document.getElementById('mediaDropdown');
+    if(!select) return;
+    // Guaranteed match, no word-matching ambiguity: every option here
+    // comes directly from the curated list, so it can never hit the
+    // false-positive/missed-phrase issues real text search has had
+    // (missed trigger phrases, common-word titles like "You"/"It"
+    // needing a signal word, article mismatches, etc.) — picking from
+    // this list sidesteps all of that entirely for this specific path.
+    const displayNames = new Set();
+    for(const key in MEDIA_OVERRIDES){
+      if(key === '_comment') continue;
+      const display = MEDIA_OVERRIDES[key].display;
+      if(display) displayNames.add(display);
+    }
+    const sorted = [...displayNames].sort((a,b)=>a.localeCompare(b));
+    select.innerHTML = '<option value="">— pick a show or movie you like —</option>' +
+      sorted.map(name => `<option value="${escapeHTML(name)}">${escapeHTML(name)}</option>`).join('');
   }
 
   function loadFromFetch(){
@@ -383,6 +429,7 @@
   });
 
   loadFromFetch();
+  loadMediaOverrides();
 
   // ---------- Chips ----------
   document.querySelectorAll('.chip').forEach(btn=>{
@@ -396,6 +443,38 @@
     if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); runSearch(); }
   });
   document.getElementById('go').addEventListener('click', runSearch);
+
+  // ---------- Reading confidence slider ----------
+  // Deliberately friendly, non-clinical framing (no raw Lexile numbers
+  // shown to the student) — same principle as the original text-based
+  // confidence phrase, just as a more discoverable UI control.
+  const confidenceSlider = document.getElementById('confidenceSlider');
+  const confidenceLabel = document.getElementById('confidenceLabel');
+  const confidenceReset = document.getElementById('confidenceReset');
+  confidenceSlider.addEventListener('input', ()=>{
+    confidenceSlider.dataset.touched = 'true';
+    confidenceLabel.textContent = `Reading confidence: ${confidenceSlider.value}/10`;
+    confidenceReset.style.display = 'inline-block';
+  });
+  confidenceReset.addEventListener('click', ()=>{
+    confidenceSlider.dataset.touched = 'false';
+    confidenceSlider.value = 5;
+    confidenceLabel.textContent = 'Optional — move the slider';
+    confidenceReset.style.display = 'none';
+  });
+
+  // ---------- Media (TV/movie) dropdown ----------
+  document.getElementById('mediaDropdown').addEventListener('change', (e)=>{
+    const chosen = e.target.value;
+    if(!chosen) return;
+    // "the show" is included deliberately, not just for readability —
+    // a few titles (You, It, Wednesday) require a real signal word
+    // like "show"/"series"/"movie" to match at all, since they're also
+    // ordinary English words. Including it here guarantees every title
+    // in the list works reliably, not just the unambiguous ones.
+    document.getElementById('query').value = `something like the show ${chosen}`;
+    runSearch();
+  });
 
   function cardHTML(book, found){
     const out = !book.available || (book.copies_available||0) <= 0;
@@ -430,6 +509,7 @@
   let lastScored = [];
   let lastFound = null;
   let lastRefBook = null;
+  let lastRefMedia = null;
   let lastPageFilter = null;
   let lastConfidenceFilter = null;
   let lastOutOfStockMatches = 0;
@@ -442,6 +522,9 @@
     let html = '<p class="results-heading">Recommended for you</p>';
     if(lastRefBook){
       html = `<p class="results-heading">Similar to "${escapeHTML(lastRefBook.title)}"</p>`;
+    }
+    if(lastRefMedia){
+      html = `<p class="results-heading">Because you like "${escapeHTML(lastRefMedia.display)}"</p>`;
     }
     if(lastPageFilter){
       html += `<p class="checked-out-note" style="margin-top:-8px;margin-bottom:16px;">Filtering to books between ${lastPageFilter.min}\u2013${lastPageFilter.max === Infinity ? '∞' : lastPageFilter.max} pages — books missing page-count data are left out rather than guessed at.</p>`;
@@ -480,16 +563,26 @@
       resultsEl.innerHTML = '<p class="empty">Catalog isn\'t loaded yet — use "Load updated catalog file" above.</p>';
       return;
     }
-    if(!rawQuery){
+    const slider = document.getElementById('confidenceSlider');
+    const sliderTouched = slider && slider.dataset.touched === 'true';
+    // Reuses the exact same, already-tested "my reading confidence is
+    // N/10" text recognition already built into search-engine.js —
+    // the slider just constructs that phrase automatically instead of
+    // requiring the student to type it themselves.
+    const confidencePhrase = sliderTouched ? ` my reading confidence is ${slider.value}/10` : '';
+    const effectiveQuery = (rawQuery + confidencePhrase).trim();
+
+    if(!effectiveQuery){
       resultsEl.innerHTML = '<p class="empty">Type what you\'re in the mood for, or tap a suggestion above.</p>';
       return;
     }
 
-    const result = BookFinder.search(rawQuery, CATALOG);
+    const result = BookFinder.search(effectiveQuery, CATALOG, MEDIA_OVERRIDES);
 
     lastScored = result.scored;
     lastFound = result.found;
     lastRefBook = result.refBook;
+    lastRefMedia = result.refMedia;
     lastPageFilter = result.pageFilter;
     lastConfidenceFilter = result.confidenceFilter;
     lastOutOfStockMatches = result.outOfStockMatches;

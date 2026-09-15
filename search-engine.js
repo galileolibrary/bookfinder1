@@ -99,22 +99,54 @@
   // tool (everything else is inclusion-only). Checks negation phrasing
   // first, since "non-American authors" should never be misread as a
   // request FOR American authors.
+  //
+  // Specific-nationality words are checked FIRST and matched against the
+  // actual author_country field (fetched live from Wikidata, not
+  // guessed) — real fix for a real gap: students with a specific home
+  // country in mind ("Vietnamese author") were getting lumped into a
+  // broad "asian" bucket that also included Chinese, Japanese, Korean,
+  // Indian authors, which isn't what "from my home country" means.
+  // Countries without their own author_country data yet (or before this
+  // fix ships) fall back to the broader region-level match below.
+  const NATIONALITY_TO_COUNTRY = {
+    'vietnamese':'vietnam', 'chinese':'china', 'korean':'korea', 'thai':'thailand',
+    'yemeni':'yemen', 'algerian':'algeria', 'filipino':'philippines', 'mexican':'mexico',
+    'salvadoran':'salvador', 'guatemalan':'guatemala', 'honduran':'honduras',
+    'indian':'india', 'pakistani':'pakistan', 'bangladeshi':'bangladesh',
+    'nigerian':'nigeria', 'ethiopian':'ethiopia', 'somali':'somalia',
+    'syrian':'syria', 'iraqi':'iraq', 'afghan':'afghanistan',
+    'ukrainian':'ukraine', 'russian':'russia', 'haitian':'haiti', 'cuban':'cuba',
+    'dominican':'dominican', 'brazilian':'brazil', 'venezuelan':'venezuela',
+    'colombian':'colombia', 'iranian':'iran', 'lebanese':'lebanon',
+    'egyptian':'egypt', 'moroccan':'morocco', 'tunisian':'tunisia',
+    'japanese':'japan', 'indonesian':'indonesia', 'malaysian':'malaysia',
+    'cambodian':'cambodia', 'laotian':'laos', 'nepali':'nepal', 'nepalese':'nepal',
+    'burmese':'myanmar', 'ghanaian':'ghana', 'kenyan':'kenya', 'sudanese':'sudan',
+    'eritrean':'eritrea', 'congolese':'congo', 'ivorian':'ivory coast',
+    'senegalese':'senegal', 'ugandan':'uganda', 'argentine':'argentina', 'argentinian':'argentina',
+    'chilean':'chile', 'french':'france', 'german':'germany', 'italian':'italy',
+    'spanish':'spain', 'polish':'poland',
+  };
+
   function extractAuthorRegionFilter(qRaw){
     const q = qRaw.toLowerCase();
     if(/\b(non-american|not american|non american)\b/.test(q)) return {mode:'exclude', region:'american'};
     if(/\b(international|foreign)\s+authors?\b/.test(q)) return {mode:'exclude', region:'american'};
+
+    for(const demonym in NATIONALITY_TO_COUNTRY){
+      const re = new RegExp('\\b' + demonym + '\\s+authors?\\b');
+      if(re.test(q)) return {mode:'include', countryContains: NATIONALITY_TO_COUNTRY[demonym]};
+    }
+
     if(/\bamerican\s+authors?\b/.test(q)) return {mode:'include', region:'american'};
     if(/\b(british|english|irish)\s+authors?\b/.test(q)) return {mode:'include', region:'british'};
-    // Specific nationality words map to the broader region we actually
-    // track — an approximation (region-level, not exact-country), but a
-    // real fix for a real gap: "Japanese author" used to silently match
-    // NOTHING in the region filter and fall through to generic keyword
-    // matching instead, surfacing books merely ABOUT Japan by any author,
-    // not actually filtered by the author's own nationality at all.
-    if(/\b(european|french|german|italian|spanish|dutch|swedish|danish|norwegian|finnish|polish|russian|portuguese)\s+authors?\b/.test(q)) return {mode:'include', region:'european'};
-    if(/\b(asian|japanese|chinese|korean|indian|vietnamese|filipino|indonesian|pakistani)\s+authors?\b/.test(q)) return {mode:'include', region:'asian'};
-    if(/\b(african|nigerian|kenyan|egyptian|south\s+african)\s+authors?\b/.test(q)) return {mode:'include', region:'african'};
-    if(/\b(latin american|latinx|mexican|brazilian|argentin(?:e|ian)|colombian|chilean)\s+authors?\b/.test(q)) return {mode:'include', region:'latin_american'};
+    // Broad region fallback — used when no specific-country demonym above
+    // matched, or for genuinely continent-level requests ("Asian authors"
+    // with no particular country in mind).
+    if(/\b(european|dutch|swedish|danish|norwegian|finnish|portuguese)\s+authors?\b/.test(q)) return {mode:'include', region:'european'};
+    if(/\basian\s+authors?\b/.test(q)) return {mode:'include', region:'asian'};
+    if(/\b(african|south\s+african)\s+authors?\b/.test(q)) return {mode:'include', region:'african'};
+    if(/\b(latin american|latinx)\s+authors?\b/.test(q)) return {mode:'include', region:'latin_american'};
     if(/\bcanadian\s+authors?\b/.test(q)) return {mode:'include', region:'canadian'};
     if(/\b(australian|new zealand)\s+authors?\b/.test(q)) return {mode:'include', region:'australian'};
     return null;
@@ -246,7 +278,17 @@
   // during testing, not a hypothetical one.
   const MEDIA_SIGNAL_WORDS = /\b(show|series|movie|film|netflix|tv|television|watch|watched|watching|season|episode)\b/i;
 
+  function normalizeForMediaMatch(s){
+    // Strips punctuation that breaks substring matching even when the
+    // words are otherwise identical — found via real testing: "Avatar:
+    // The Last Airbender" (colon) and "Grey's Anatomy" (apostrophe)
+    // both failed to match their own stored keys purely because of
+    // punctuation differences, not because the title was wrong.
+    return s.replace(/[:'’]/g, '').replace(/\s+/g, ' ').trim();
+  }
+
   function findReferenceMedia(ref, mediaOverrides, fullQuery){
+    const normalizedRef = normalizeForMediaMatch(ref);
     let best = null, bestLen = 0;
     for(const key in (mediaOverrides||{})){
       if(key === '_comment') continue;
@@ -254,8 +296,9 @@
       if(entry.risky && !MEDIA_SIGNAL_WORDS.test(fullQuery || '')){
         continue;
       }
-      if(ref.includes(key) || key.includes(ref)){
-        const len = Math.min(key.length, ref.length);
+      const normalizedKey = normalizeForMediaMatch(key);
+      if(normalizedRef.includes(normalizedKey) || normalizedKey.includes(normalizedRef)){
+        const len = Math.min(normalizedKey.length, normalizedRef.length);
         if(len > bestLen){ bestLen = len; best = entry; }
       }
     }
@@ -428,10 +471,19 @@
     }
     if(authorRegionFilter){
       if(authorRegionFilter.mode === 'include'){
-        // "European" is treated generously — a British author is also a
-        // reasonable answer to "European authors" for a student's purposes.
-        pool = pool.filter(b => b.author_region === authorRegionFilter.region ||
-          (authorRegionFilter.region === 'european' && b.author_region === 'british'));
+        if(authorRegionFilter.countryContains){
+          // Specific-country match, using the real author_country field —
+          // flexible (substring, case-insensitive) since Wikidata's exact
+          // label wording for a country isn't something to assume ("South
+          // Korea" vs "Korea", etc.).
+          const needle = authorRegionFilter.countryContains;
+          pool = pool.filter(b => b.author_country && b.author_country.toLowerCase().includes(needle));
+        } else {
+          // "European" is treated generously — a British author is also a
+          // reasonable answer to "European authors" for a student's purposes.
+          pool = pool.filter(b => b.author_region === authorRegionFilter.region ||
+            (authorRegionFilter.region === 'european' && b.author_region === 'british'));
+        }
       } else {
         // Exclusion only applies to CONFIRMED regions — a book whose author
         // nationality we never resolved is left out entirely here too,
