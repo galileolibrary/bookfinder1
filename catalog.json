@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-18",
-  "source": "MARC: ExportBibJob6107450USMarc.001 + Status: LibraryTitleCopyReportJob6151298.xlsx",
+  "generated_at": "2026-09-21",
+  "source": "MARC: ExportBibJob6107450USMarc.001 + Status: LibraryTitleCopyReportJob6155308.xlsx",
   "books": [
     {
       "id": "1",
@@ -82422,9 +82422,9 @@
       "title": "Maximum security",
       "author": "Muchamore, Robert.",
       "isbn": "9781442413627",
-      "available": true,
+      "available": false,
       "copies_total": 1,
-      "copies_available": 1,
+      "copies_available": 0,
       "call_number": "FIC MUC",
       "section": "",
       "page_count": 302,
@@ -131846,9 +131846,9 @@
       "title": "A darker shade of magic",
       "author": "Schwab, Victoria.",
       "isbn": "9780765376459",
-      "available": true,
+      "available": false,
       "copies_total": 1,
-      "copies_available": 1,
+      "copies_available": 0,
       "call_number": "FIC SCH",
       "section": "",
       "page_count": 400,
