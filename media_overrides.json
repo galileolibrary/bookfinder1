@@ -1,5 +1,5 @@
 {
-  "_comment": "Curated movie/TV -> book-tag mapping, so students who know a show/movie but not a book can search by it. Every value here MUST be a real tag already used elsewhere in the system (check search-engine.js SYN for the current valid list) \u2014 an invented tag here would silently never match anything. Add more titles any time a real student request isn't covered.",
+  "_comment": "Curated movie/TV -> book-tag mapping, so students who know a show/movie but not a book can search by it. Every tag here MUST be one that real books in the catalog actually carry \u2014 a tag no book has silently matches nothing (\"twisty\" and \"contemporary\" were once used here and are understood by the search box, but the catalog build never assigns them to a book). The safest tags are the ones the catalog build always assigns from MARC subjects (see TAG_RULES in prepare_catalog.py, e.g. suspenseful, realistic fiction, dark, funny, sweet); mood words that only come from the optional AI tagging pass can be thin or missing depending on the school. Run catalog_tests.py after editing \u2014 it checks every tag here against the catalog. Add more titles any time a real student request isn't covered.",
   "game of thrones": {
     "display": "Game of Thrones",
     "genres": [
@@ -188,7 +188,7 @@
     "moods": [
       "dark",
       "thought-provoking",
-      "twisty"
+      "suspenseful"
     ],
     "themes": [
       "ethics",
@@ -207,7 +207,7 @@
     "moods": [
       "dark",
       "thought-provoking",
-      "twisty"
+      "suspenseful"
     ],
     "themes": [
       "identity",
@@ -264,8 +264,7 @@
     ],
     "moods": [
       "scary",
-      "dark",
-      "twisty"
+      "dark"
     ],
     "themes": [
       "identity"
@@ -337,8 +336,7 @@
     ],
     "moods": [
       "clever",
-      "suspenseful",
-      "twisty"
+      "suspenseful"
     ],
     "themes": [
       "justice"
@@ -376,7 +374,7 @@
     "moods": [
       "clever",
       "witty",
-      "twisty"
+      "suspenseful"
     ],
     "themes": [
       "justice",
@@ -394,7 +392,6 @@
     ],
     "moods": [
       "dark",
-      "twisty",
       "suspenseful"
     ],
     "themes": [
@@ -432,7 +429,7 @@
       "romance"
     ],
     "moods": [
-      "twisty",
+      "suspenseful",
       "dark"
     ],
     "themes": [
@@ -467,7 +464,7 @@
     "display": "To All the Boys I've Loved Before",
     "genres": [
       "romance",
-      "contemporary"
+      "realistic fiction"
     ],
     "moods": [
       "sweet",
@@ -528,8 +525,7 @@
   "euphoria": {
     "display": "Euphoria",
     "genres": [
-      "realistic fiction",
-      "contemporary"
+      "realistic fiction"
     ],
     "moods": [
       "dark",
@@ -570,7 +566,7 @@
     "display": "The Summer I Turned Pretty",
     "genres": [
       "romance",
-      "contemporary"
+      "realistic fiction"
     ],
     "moods": [
       "sweet",
@@ -589,8 +585,7 @@
   "the office": {
     "display": "The Office",
     "genres": [
-      "realistic fiction",
-      "contemporary"
+      "realistic fiction"
     ],
     "moods": [
       "funny",
@@ -628,8 +623,7 @@
     "display": "Never Have I Ever",
     "genres": [
       "realistic fiction",
-      "romance",
-      "contemporary"
+      "romance"
     ],
     "moods": [
       "funny",
@@ -652,7 +646,7 @@
     "genres": [
       "romance",
       "graphic novel",
-      "contemporary"
+      "realistic fiction"
     ],
     "moods": [
       "sweet",
@@ -739,8 +733,7 @@
     ],
     "moods": [
       "dark",
-      "brutal",
-      "twisty"
+      "brutal"
     ],
     "themes": [
       "power",
