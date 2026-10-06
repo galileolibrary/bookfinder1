@@ -36,7 +36,9 @@
       // romance" returned zero results. Books that are contemporary
       // fiction carry "realistic fiction" (see TAG_RULES in prepare_catalog.py).
       "contemporary":"realistic fiction",
-      "nonfiction":"nonfiction","true story":"nonfiction","real story":"nonfiction","memoir":"memoir","biography":"memoir",
+      "nonfiction":"nonfiction","true story":"nonfiction","real story":"nonfiction",// "memoir"/"biography" used to map to a "memoir" genre that no book
+      // carries. Biographies and memoirs are tagged "nonfiction".
+      "memoir":"nonfiction","biography":"nonfiction","autobiography":"nonfiction","biographies":"nonfiction","autobiographies":"nonfiction",
       "fiction":"fiction","made up story":"fiction",
       "graphic novel":"graphic novel","comic":"graphic novel",
       "adventure":"adventure","war":"war","verse":"verse novel","poetry":"verse novel",
@@ -48,7 +50,7 @@
     moods: {
       "scary":"scary","creepy":"creepy","spooky":"scary","dark":"dark","terrifying":"scary",
       "funny":"funny","hilarious":"funny","humor":"funny",
-      "sad":"emotional","cry":"heartbreaking","emotional":"emotional","tearjerker":"heartbreaking","heavy":"heavy",
+      "sad":"emotional","cry":"heartbreaking","emotional":"emotional","tearjerker":"heartbreaking","heavy":"somber",
       "fast":"fast-paced","quick":"quick read","short":"quick read","fast read":"fast-paced",
       "epic":"epic","action":"fast-paced","suspenseful":"suspenseful",
       // "twisty"/"twist" used to map to a "twisty" tag no book carries, so
@@ -58,7 +60,9 @@
       "sweet":"sweet","wholesome":"sweet","cute":"sweet",
       "hopeful":"hopeful","uplifting":"hopeful","inspiring":"hopeful",
       "brutal":"brutal","intense":"intense","gritty":"gritty","honest":"honest","thought-provoking":"thought-provoking",
-      "clever":"clever","witty":"witty","fun":"fun"
+      "clever":"clever","witty":"witty",
+      // "fun" and "heavy" used to map to tags only 1-3 books carry.
+      "fun":"lighthearted"
     },
     themes: {
       "friendship":"friendship","family":"family","revenge":"revenge","grief":"grief",
@@ -66,7 +70,10 @@
       "trauma":"trauma","healing":"healing","first love":"first love","betrayal":"betrayal",
       "power":"power","war":"war","magic":"magic","found family":"found family","love":"love",
       "class conflict":"class conflict","social class":"class conflict","rich and poor":"class conflict","class differences":"class conflict",
-      "myth":"myth","mythology":"myth","ethics":"ethics","secret":"secret societies",
+      "myth":"myth","mythology":"myth","ethics":"ethics",
+      // "secret" used to map only to "secret societies" (1 book); "secrets"
+      // is the tag books actually carry (also covers "secret society").
+      "secret":"secrets","secrets":"secrets",
       "draw":"drawing","drawing":"drawing","how to draw":"drawing","cartooning":"drawing","sketching":"drawing","illustration":"drawing",
       "classic":"classic","classics":"classic","old book":"classic","timeless":"classic",
       "coming of age":"coming-of-age","coming-of-age":"coming-of-age","orphan":"orphan","orphans":"orphan",
