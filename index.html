@@ -269,6 +269,18 @@
     margin-top:22px;
   }
 
+  /* Results tabs: "On the shelf" / "Unavailable right now" */
+  .result-tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:0 0 20px;}
+  .result-tab{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.04em;
+    padding:9px 18px; border-radius:999px; cursor:pointer;
+    background:transparent; color:var(--paper); border:1px solid rgba(255,255,255,0.4);
+  }
+  .result-tab:hover{border-color:var(--paper);}
+  .result-tab[aria-selected="true"]{background:var(--paper); color:var(--lamp-green-dark); border-color:var(--paper); font-weight:500;}
+  .result-tab:focus-visible{outline:3px solid var(--brass-bright); outline-offset:2px;}
+  .unavailable-note{text-align:center; color:var(--paper); opacity:.85; font-size:15px; margin:-6px auto 18px; max-width:560px;}
+
   footer{
     text-align:center;
     margin-top:60px;
@@ -548,7 +560,7 @@
 
   function cardHTML(book, found){
     const out = !book.available || (book.copies_available||0) <= 0;
-    const stampLabel = out ? "Checked out" : "On the shelf";
+    const stampLabel = out ? "Unavailable" : "On the shelf";
     const callnum = (book.isbn ? "ISBN " + book.isbn : "") + (book.page_count ? " · " + book.page_count + " pages" : "") + (book.ar_level ? " · AR " + book.ar_level : "");
     const awardLine = (book.awards && book.awards.length) ? `<div class="award">🏆 ${escapeHTML(book.awards[0])}</div>` : '';
     const findIt = [book.section, book.call_number].filter(Boolean).join(' · ');
@@ -562,7 +574,7 @@
         <p class="why">${escapeHTML(BookFinder.whyLine(book, found))}</p>
         ${awardLine}
         ${seriesNote}
-        ${findIt ? `<div class="findit">📍 Find it: ${escapeHTML(findIt)}</div>` : ''}
+        ${(findIt && !out) ? `<div class="findit">📍 Find it: ${escapeHTML(findIt)}</div>` : ''}
         <div class="tags">
           ${(book.genres||[]).slice(0,2).map(t=>`<span class="tag">${escapeHTML(t)}</span>`).join('')}
           ${(book.moods||[]).slice(0,2).map(t=>`<span class="tag">${escapeHTML(t)}</span>`).join('')}
@@ -575,8 +587,14 @@
     return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
 
+  // Per-school switch: set to false to hide the "Unavailable right now" tab
+  // (some libraries prefer students only see books they can borrow today).
+  const SHOW_UNAVAILABLE_TAB = true;
+
   const PAGE_SIZE = 15;
   let lastScored = [];
+  let lastUnavailable = [];
+  let activeTab = 'shelf';
   let lastFound = null;
   let lastRefBook = null;
   let lastRefMedia = null;
@@ -585,9 +603,16 @@
   let lastOutOfStockMatches = 0;
   let shownCount = PAGE_SIZE;
 
+  // "Something like X" searches rank almost every book, so a raw count would be
+  // misleadingly huge; cap what we display.
+  function fmtCount(n){ return n > 99 ? '99+' : String(n); }
+
   function renderResults(){
     const resultsEl = document.getElementById('results');
-    const visible = lastScored.slice(0, shownCount);
+    const tabsOn = SHOW_UNAVAILABLE_TAB && lastUnavailable.length > 0;
+    if(!tabsOn) activeTab = 'shelf';
+    const list = activeTab === 'unavailable' ? lastUnavailable : lastScored;
+    const visible = list.slice(0, shownCount);
 
     let html = '<p class="results-heading">Recommended for you</p>';
     if(lastRefBook){
@@ -602,20 +627,39 @@
     if(lastConfidenceFilter){
       html += `<p class="checked-out-note" style="margin-top:-8px;margin-bottom:16px;">Finding books that match how you're feeling as a reader right now 📚</p>`;
     }
+    if(tabsOn){
+      html += '<div class="result-tabs" role="tablist">' +
+        `<button type="button" role="tab" class="result-tab" data-tab="shelf" aria-selected="${activeTab==='shelf'}">On the shelf (${fmtCount(lastScored.length)})</button>` +
+        `<button type="button" role="tab" class="result-tab" data-tab="unavailable" aria-selected="${activeTab==='unavailable'}">Unavailable right now (${fmtCount(lastUnavailable.length)})</button>` +
+        '</div>';
+      if(activeTab === 'unavailable'){
+        html += '<p class="unavailable-note">These match your search too, but no copy is on the shelf right now.</p>';
+      }
+    }
     if(visible.length === 0){
-      html += '<p class="noresults">No available books matched that closely. Try fewer or broader words — e.g. just "scary" or "funny."</p>';
+      html += (tabsOn && activeTab === 'shelf')
+        ? '<p class="noresults">Nothing matching is on the shelf right now — check the “Unavailable right now” tab above, or try fewer or broader words.</p>'
+        : '<p class="noresults">No available books matched that closely. Try fewer or broader words — e.g. just "scary" or "funny."</p>';
     } else {
       html += '<div class="cards">' + visible.map(x=>cardHTML(x.book, lastFound)).join('') + '</div>';
     }
-    if(shownCount < lastScored.length){
-      const remaining = lastScored.length - shownCount;
+    if(shownCount < list.length){
+      const remaining = list.length - shownCount;
       html += `<div style="text-align:center;margin-top:20px;"><button type="button" id="showMoreBtn" class="chip" style="padding:10px 22px;cursor:pointer;">Show ${Math.min(PAGE_SIZE, remaining)} more (${remaining} left)</button></div>`;
     }
-    if(lastOutOfStockMatches > 0){
+    if(!tabsOn && lastOutOfStockMatches > 0){
       html += `<p class="checked-out-note">${lastOutOfStockMatches} more close match${lastOutOfStockMatches>1?'es are':' is'} currently checked out, so we left ${lastOutOfStockMatches>1?'them':'it'} off this list.</p>`;
     }
 
     resultsEl.innerHTML = html;
+
+    resultsEl.querySelectorAll('.result-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeTab = btn.dataset.tab;
+        shownCount = PAGE_SIZE;
+        renderResults();
+      });
+    });
 
     const moreBtn = document.getElementById('showMoreBtn');
     if(moreBtn){
@@ -650,6 +694,8 @@
     const result = BookFinder.search(effectiveQuery, CATALOG, MEDIA_OVERRIDES);
 
     lastScored = result.scored;
+    lastUnavailable = result.unavailableScored || [];
+    activeTab = 'shelf';
     lastFound = result.found;
     lastRefBook = result.refBook;
     lastRefMedia = result.refMedia;
